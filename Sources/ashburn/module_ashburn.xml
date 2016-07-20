@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_ashburn" default="compile.module.ashburn">
+  <dirname property="module.ashburn.basedir" file="${ant.file.module_ashburn}"/>
+  
+  <property name="module.jdk.home.ashburn" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.ashburn" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.ashburn" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.ashburn" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="ashburn.output.dir" value="${module.ashburn.basedir}/out/production/ashburn"/>
+  <property name="ashburn.testoutput.dir" value="${module.ashburn.basedir}/out/test/ashburn"/>
+  
+  <path id="ashburn.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="ashburn.module.production.classpath">
+    <path refid="${module.jdk.classpath.ashburn}"/>
+  </path>
+  
+  <path id="ashburn.runtime.production.module.classpath">
+    <pathelement location="${ashburn.output.dir}"/>
+  </path>
+  
+  <path id="ashburn.module.classpath">
+    <path refid="${module.jdk.classpath.ashburn}"/>
+    <pathelement location="${ashburn.output.dir}"/>
+  </path>
+  
+  <path id="ashburn.runtime.module.classpath">
+    <pathelement location="${ashburn.testoutput.dir}"/>
+    <pathelement location="${ashburn.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.ashburn">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.ashburn">
+    <patternset refid="excluded.from.module.ashburn"/>
+  </patternset>
+  
+  <path id="ashburn.module.sourcepath">
+    <dirset dir="${module.ashburn.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.ashburn" depends="compile.module.ashburn.production,compile.module.ashburn.tests" description="Compile module ashburn"/>
+  
+  <target name="compile.module.ashburn.production" depends="register.custom.compilers" description="Compile module ashburn; production classes">
+    <mkdir dir="${ashburn.output.dir}"/>
+    <javac2 destdir="${ashburn.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.ashburn}/javac">
+      <compilerarg line="${compiler.args.ashburn}"/>
+      <bootclasspath refid="ashburn.module.bootclasspath"/>
+      <classpath refid="ashburn.module.production.classpath"/>
+      <src refid="ashburn.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.ashburn"/>
+    </javac2>
+    
+    <copy todir="${ashburn.output.dir}">
+      <fileset dir="${module.ashburn.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.ashburn.tests" depends="register.custom.compilers,compile.module.ashburn.production" description="compile module ashburn; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.ashburn" description="cleanup module">
+    <delete dir="${ashburn.output.dir}"/>
+    <delete dir="${ashburn.testoutput.dir}"/>
+  </target>
+</project>

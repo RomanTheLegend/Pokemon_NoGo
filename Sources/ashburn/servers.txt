@@ -1,0 +1,7 @@
+C:\Windows\System32>nslookup pgorelease.nianticlabs.com
+Server:  UnKnown
+Address:  192.168.43.1
+
+Non-authoritative answer:
+Name:    pgorelease.nianticlabs.com
+Address:  130.211.188.132
