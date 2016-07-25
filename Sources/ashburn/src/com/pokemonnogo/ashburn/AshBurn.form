@@ -70,20 +70,10 @@
           </component>
           <component id="20b57" class="javax.swing.JButton" binding="setPointButton" default-binding="true">
             <constraints>
-              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="72" height="30"/>
-              </grid>
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Set point"/>
-            </properties>
-          </component>
-          <component id="e58ba" class="javax.swing.JLabel" binding="dirLabel">
-            <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Direction: "/>
+              <text value="Teleport to"/>
             </properties>
           </component>
           <component id="80078" class="javax.swing.JTextArea" binding="keyReadingArea">
@@ -109,6 +99,22 @@
             <properties>
               <selected value="false"/>
               <text value=""/>
+            </properties>
+          </component>
+          <component id="e58ba" class="javax.swing.JLabel" binding="dirLabel">
+            <constraints>
+              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="--"/>
+            </properties>
+          </component>
+          <component id="24b1f" class="javax.swing.JButton" binding="walkToButton" default-binding="true">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Walk to"/>
             </properties>
           </component>
         </children>

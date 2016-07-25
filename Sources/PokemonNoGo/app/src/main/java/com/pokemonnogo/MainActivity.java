@@ -1,11 +1,15 @@
 package com.pokemonnogo;
 
+
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 //import android.support.v7.app.AppCompatActivity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.NotificationCompat;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.TextView;
@@ -13,7 +17,9 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity  {
 
-    public static Handler mUiHandler = null;
+    public static Handler logWindowHandler = null;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +28,16 @@ public class MainActivity extends Activity  {
 
         Environment.mainContext=this;
 
+
+
+
+
+
+
         final TextView logWindow=(TextView) findViewById(R.id.textView);
         logWindow.setMovementMethod(new ScrollingMovementMethod());
 
-        mUiHandler = new Handler() // Receive messages from service class
+        logWindowHandler = new Handler() // Receive messages from service class
         {
             public void handleMessage(Message msg)
             {
@@ -55,6 +67,8 @@ public class MainActivity extends Activity  {
     }
 
     public void exitApp(View view){
+        stopService(new Intent(getBaseContext(), CommandCenter.class));
+
         finish();
     }
 

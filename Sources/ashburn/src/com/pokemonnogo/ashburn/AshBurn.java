@@ -63,6 +63,7 @@ public class AshBurn implements KeyListener {
     private JTextArea keyReadingArea;
     private JTextField messageBoard;
     private JCheckBox checkBox1;
+    private JButton walkToButton;
 
     private ArrayList<JLabel> cpPositionLabels;
     private ArrayList<JTextField> cpNames;
@@ -150,6 +151,9 @@ public class AshBurn implements KeyListener {
         setPointButton.addActionListener(buttonsProcessor);
         setPointButton.setActionCommand("Set current location");
 
+        walkToButton.addActionListener(buttonsProcessor);
+        walkToButton.setActionCommand("Walk to location");
+
 
 
         keyReadingArea.addKeyListener(this);
@@ -208,6 +212,9 @@ public class AshBurn implements KeyListener {
                     break;
                 case "Set current location":
                     setCurrentLocation();
+                    break;
+                case "Walk to location":
+                    walkToLocation();
                     break;
                 case "Reconnect":
                     signalProcessor.reconnect();
@@ -337,9 +344,48 @@ public class AshBurn implements KeyListener {
 
 
 
-    public void goToCheckpoint(int id){
-        Coordinates target=dataManager.loadCheckpoint(id);
+    private void goToCheckpoint(int id) {
+        Coordinates target = dataManager.loadCheckpoint(id);
 
+        autopilotToLocation(target);
+    }
+
+
+    private void walkToLocation(){
+
+
+        Coordinates target=new Coordinates();
+
+        Double lon=0.0;
+        Double lat=0.0;
+
+        boolean operationFailed=false;
+
+        try {
+            lat= Double.parseDouble(LatMain.getText());
+            lon= Double.parseDouble(LonMain.getText());
+        } catch (NumberFormatException e) {
+            messageBoard.setText("Invalid coordinates");
+            operationFailed=true;
+        }
+
+
+
+        if(!operationFailed){
+
+            target.latitude=lat;
+            target.longitude=lon;
+
+            autopilotToLocation(target);
+
+        }
+
+
+    }
+
+
+
+    private void autopilotToLocation(Coordinates target){
 
         isOnAutopilot=true;
 

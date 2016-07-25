@@ -1,11 +1,14 @@
 package com.pokemonnogo;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.StrictMode;
 
+import android.support.v7.app.NotificationCompat;
 import android.widget.Toast;
 
 
@@ -26,15 +29,14 @@ public class CommandCenter extends Service {
 
 
 
-    IBinder mBinder;
-    int mStartMode;
-
-    boolean mAllowRebind;
-
     private Thread thread = null;
     private NetworkModule networkModule = null;
 
+    private NotificationManager notificationManager;
 
+    private NotificationCompat.Builder notificationBuilder;
+
+    private boolean isServiceRunning=false;
 
     @Override
     public IBinder onBind(Intent arg0) {
@@ -49,23 +51,62 @@ public class CommandCenter extends Service {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
+
+        isServiceRunning=false;
+
+        notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+        notificationBuilder = new NotificationCompat.Builder(this);
+
+
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP| Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
+                notificationIntent, 0);
+
+
+        notificationBuilder.setContentTitle("Pokemon NoGo");
+        notificationBuilder.setContentText("");
+        notificationBuilder.setSmallIcon(R.drawable.pokeball_icon);
+        notificationBuilder.setContentIntent(pendingIntent);
+        notificationBuilder.setOngoing(true);
+
+        notificationBuilder.build();
+
+        notificationManager.notify(1234,notificationBuilder.build());
+
+
+
+
+
+        networkModule=new NetworkModule();
+
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
 
-        networkModule=new NetworkModule();
-        if(networkModule.init){
+
+
+        if(!isServiceRunning){
+            sendMessage("...");
+
+
+
+
+        if(networkModule.isReady){
             thread = new Thread(networkModule);
             thread.start();
 
-            Toast.makeText(this, "Service Started", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Pokemon NoGo service started", Toast.LENGTH_LONG).show();
 
-            sendMessage("Service is running");
+            sendNotification("No clients connected");
+            //sendMessage("Service is running");
         }else {
 
-            Toast.makeText(this, "Service failed", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Pokemon NoGo service failed", Toast.LENGTH_LONG).show();
 
             sendMessage("Service could not start");
             onDestroy();
@@ -73,8 +114,15 @@ public class CommandCenter extends Service {
 
 
 
+        startForeground(1234,notificationBuilder.build());
+        isServiceRunning=true;
 
-        return START_STICKY;
+        }else {
+            sendMessage("Service already running");
+        }
+
+
+        return START_NOT_STICKY;
     }
 
 
@@ -85,6 +133,7 @@ public class CommandCenter extends Service {
     @Override
     public void onDestroy() {
 
+        networkModule.isRunning=false;
         if (thread != null) {
             networkModule.stopListener();
             try {
@@ -95,24 +144,36 @@ public class CommandCenter extends Service {
         }
 
 
+
+
+
+        notificationManager.cancelAll();
+        stopForeground(true);
+        isServiceRunning=false;
+        Toast.makeText(this, "Pokemon NoGo service stopped", Toast.LENGTH_LONG).show();
+
         super.onDestroy();
-        Toast.makeText(this, "Service stopped", Toast.LENGTH_LONG).show();
     }
 
 
 
 
     private void sendMessage(String message){
-        if(null != MainActivity.mUiHandler)
+        if(null != MainActivity.logWindowHandler)
         {
             Message msgToActivity = new Message();
             msgToActivity.obj  = message;
 
-            MainActivity.mUiHandler.sendMessage(msgToActivity);
+            MainActivity.logWindowHandler.sendMessage(msgToActivity);
         }
 
     }
 
+
+    private void sendNotification(String message){
+        notificationBuilder.setContentText(message);
+        notificationManager.notify(1234,notificationBuilder.build());
+    }
 
 
 
@@ -120,18 +181,18 @@ public class CommandCenter extends Service {
 class NetworkModule implements Runnable {
 
     BufferedReader inboundBuffer;
-    private ServerSocket listener;
-    private Socket socket;
+    private ServerSocket socketListener;
+    private Socket clientConnection;
     private boolean isRunning=false;
-    public boolean init=false;
+    public boolean isReady=false;
     private FakeGPS fakeGPS;
 
     public NetworkModule(){
         try {
-            listener = new ServerSocket(9090);
+            socketListener = new ServerSocket(9090);
             fakeGPS=new FakeGPS();
             isRunning=true;
-            init=true;
+            isReady=true;
         } catch (Exception e) {
             sendMessage("Failed to open socket");
             e.printStackTrace();
@@ -143,48 +204,69 @@ class NetworkModule implements Runnable {
 
     @Override
     public void run() {
+
+        boolean isConnectionActive=false;
+
+        Double latitude;
+        Double longitude;
+
+        while (isRunning) {
+
         try {
-            socket = listener.accept();
-            sendMessage("Client connection detected");
-            inboundBuffer = new BufferedReader(
-                    new InputStreamReader(socket.getInputStream()));
+            if(!socketListener.isClosed() && !isConnectionActive) {
+                sendMessage("Waiting for client connection");
+                clientConnection = socketListener.accept();
+                sendNotification("Client connected");
+                sendMessage("Client connection detected");
+                isConnectionActive=true;
+                inboundBuffer = new BufferedReader(
+                        new InputStreamReader(clientConnection.getInputStream()));
+            }
 
-            Double latitude = 60.089438;
-            Double longitude = 29.899352;
 
-            while (isRunning) {
+
+            if(isConnectionActive) {
 
                 String message = inboundBuffer.readLine();
                 if (!message.equals(null)){
 
-                    if(message.indexOf("GPS!")!=0){
-                        if(message.length()>2){
-                            sendMessage(message);
-                        }
-                    }else {
-
+                    if(message.indexOf("GPS!")==0){
                         String [] messageParts=message.split("!",3);
                         longitude=Double.parseDouble(messageParts[1]);
                         latitude=Double.parseDouble(messageParts[2]);
 
                         fakeGPS.applyCoordinates(longitude,latitude);
+
+                    }else {
+                        if(message.length()>2){
+                            sendMessage(message);
+                        }
                     }
 
 
 
 
-                }else{
-                    sendMessage("Client disconnected");
-                    isRunning=false;
                 }
 
             }
-        }catch (Exception expected){
-            sendMessage("Connection interrupted");
-            isRunning=false;
-            stopSelf();
-        }
 
+
+        }catch (Exception expected){
+            sendMessage("Client disconnected");
+
+
+            if( socketListener.isClosed()){
+                stopListener();
+                isRunning=false;
+            }else {
+                isConnectionActive=false;
+            }
+
+
+
+
+        }
+        }
 
     }
 
@@ -192,15 +274,33 @@ class NetworkModule implements Runnable {
 
 
     private void stopListener(){
-        try {
-            isRunning=false;
-            socket.close();
-            listener.close();
-            sendMessage("Network connections closed");
 
-        }catch (Exception expected){
-            sendMessage("Error closing connections");
+        isRunning = false;
+
+
+        if(clientConnection!=null ) {
+
+            try {
+                clientConnection.close();
+                sendMessage("Stop accepting client connections");
+            } catch (Exception expected) {
+                sendMessage("Error closing connection");
+            }
         }
+
+
+
+        if(socketListener !=null){
+
+            try {
+                socketListener.close();
+                sendMessage("Socket closed");
+            } catch (Exception expected) {
+                sendMessage("Error closing socket");
+            }
+
+        }
+
 
 
     }
