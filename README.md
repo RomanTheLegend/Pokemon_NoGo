@@ -76,7 +76,7 @@ and then rename it and reboot
 ```
 
 15. Launch Pokemon GO, launch AshBurn client and enjoy the game
-
+16. To enable Pokemon locator, please provide your secondary PTC login in AshBurn client under Settings
 
 
 
