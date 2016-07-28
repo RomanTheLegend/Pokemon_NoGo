@@ -19,7 +19,7 @@ Features:
 ## Please support this project by following my twitter or reddit thread
 
 #[Official Twitter] (https://twitter.com/RomanTheLegend) 
-Please give follow up or contact me here.
+Please give follow up or contact me here. Any feedback is much appreciated.
 
 #[Official Pokemon NoGo Reddit thread] (https://www.reddit.com/r/pokemongodev/comments/4tnvz2/pokemon_nogo_project/)#
 
@@ -38,6 +38,7 @@ Please give follow up or contact me here.
 	(also please activate it by starting a game and picking your first pokemon)
 
 ## How to setup
+(Youtube video with installation steps and client demo will come in the next few days)
 
 1. Download latest Pokemon NoGo files (v4.2 beta)
 2. Install NOX player, launch it and go to settings:	
