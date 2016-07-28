@@ -6,6 +6,12 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
+
+import com.pokemonmapswrapper.PokemonData;
+import com.pokemonmapswrapper.RequestProcessor;
+
 
 /**
  * Created by the.Legend on 17/07/2016.
@@ -32,9 +38,9 @@ public class AshBurn implements KeyListener {
     private JButton cpSetBtn08;
     private JButton cpSetBtn09;
     private JButton cpSetBtn10;
-    private JButton loadSettingsButton;
+    private JButton loadGameDataButton;
     private JButton reconnectButton;
-    private JButton saveSettingsButton;
+    private JButton saveGameDataButton;
     private JButton setPointButton;
     private JLabel cpPos01;
     private JLabel cpPos02;
@@ -64,104 +70,174 @@ public class AshBurn implements KeyListener {
     private JTextField messageBoard;
     private JCheckBox checkBox1;
     private JButton walkToButton;
+    private JButton loopThroughCheckpointsButton;
+    private JButton clearRouteButton;
+    private JTextField textRouteSequence;
+    private JButton cpAddRoutePointButton01;
+    private JButton cpAddRoutePointButton03;
+    private JButton cpAddRoutePointButton02;
+    private JButton cpAddRoutePointButton05;
+    private JButton cpAddRoutePointButton07;
+    private JButton cpAddRoutePointButton09;
+    private JButton cpAddRoutePointButton04;
+    private JButton cpAddRoutePointButton06;
+    private JButton cpAddRoutePointButton08;
+    private JButton cpAddRoutePointButton10;
+    private JLabel currentLoopTarget;
+    private JButton locatorSwitchButton;
+    private JTextArea textArea1;
+    private static JMenuBar menuBar = new JMenuBar();
 
     private ArrayList<JLabel> cpPositionLabels;
     private ArrayList<JTextField> cpNames;
 
-    private ButtonProcessor buttonsProcessor;
+
+    private UserActionsProcessor userActionsProcessor;
 
     private SignalProcessor signalProcessor;
     private DataManager dataManager;
 
     private Coordinates position;
+    private ServiceAccount serviceAccountPTC;
 
     private boolean isOnAutopilot=false;
+    private boolean isLoopEnabled=false;
 
     private boolean goFast=false;
 
+    private int loopTargetID=0;
+
     private String path;
+
+    private List<Integer> routePoints;
+
+    private RequestProcessor requestProcessor;
+
+    private boolean isRefreshEnabled=true;
+
+    private final long REFRESH_TIME=5000;
 
 
     public AshBurn() {
 
 
-        buttonsProcessor = new ButtonProcessor();
+        userActionsProcessor = new UserActionsProcessor();
         signalProcessor = new SignalProcessor();
         dataManager = new DataManager();
+        routePoints = new ArrayList<>();
+
+        serviceAccountPTC = new ServiceAccount();
+
 
         cpPositionLabels = new ArrayList<>(Arrays.asList(cpPos01, cpPos02, cpPos03, cpPos04, cpPos05, cpPos06, cpPos07, cpPos08, cpPos09, cpPos10));
         cpNames = new ArrayList<>(Arrays.asList(cpName01, cpName02, cpName03, cpName04, cpName05, cpName06, cpName07, cpName08, cpName09, cpName10));
 
-        path=System.getProperty("user.dir")+"\\";
+        if(System.getProperty("os.name").indexOf("Windows")>=0) {
+            path = System.getProperty("user.dir") + "\\";
+        }else{
+            path = System.getProperty("user.dir") + "/";
+        }
 
 
-        cpGoBtn01.addActionListener(buttonsProcessor);
+        cpGoBtn01.addActionListener(userActionsProcessor);
         cpGoBtn01.setActionCommand("Go to checkpoint");
-        cpGoBtn02.addActionListener(buttonsProcessor);
+        cpGoBtn02.addActionListener(userActionsProcessor);
         cpGoBtn02.setActionCommand("Go to checkpoint");
-        cpGoBtn03.addActionListener(buttonsProcessor);
+        cpGoBtn03.addActionListener(userActionsProcessor);
         cpGoBtn03.setActionCommand("Go to checkpoint");
-        cpGoBtn04.addActionListener(buttonsProcessor);
+        cpGoBtn04.addActionListener(userActionsProcessor);
         cpGoBtn04.setActionCommand("Go to checkpoint");
-        cpGoBtn05.addActionListener(buttonsProcessor);
+        cpGoBtn05.addActionListener(userActionsProcessor);
         cpGoBtn05.setActionCommand("Go to checkpoint");
-        cpGoBtn06.addActionListener(buttonsProcessor);
+        cpGoBtn06.addActionListener(userActionsProcessor);
         cpGoBtn06.setActionCommand("Go to checkpoint");
-        cpGoBtn07.addActionListener(buttonsProcessor);
+        cpGoBtn07.addActionListener(userActionsProcessor);
         cpGoBtn07.setActionCommand("Go to checkpoint");
-        cpGoBtn08.addActionListener(buttonsProcessor);
+        cpGoBtn08.addActionListener(userActionsProcessor);
         cpGoBtn08.setActionCommand("Go to checkpoint");
-        cpGoBtn09.addActionListener(buttonsProcessor);
+        cpGoBtn09.addActionListener(userActionsProcessor);
         cpGoBtn09.setActionCommand("Go to checkpoint");
-        cpGoBtn10.addActionListener(buttonsProcessor);
+        cpGoBtn10.addActionListener(userActionsProcessor);
         cpGoBtn10.setActionCommand("Go to checkpoint");
 
 
-        cpSetBtn01.addActionListener(buttonsProcessor);
+        cpSetBtn01.addActionListener(userActionsProcessor);
         cpSetBtn01.setActionCommand("Set checkpoint");
-        cpSetBtn02.addActionListener(buttonsProcessor);
+        cpSetBtn02.addActionListener(userActionsProcessor);
         cpSetBtn02.setActionCommand("Set checkpoint");
-        cpSetBtn03.addActionListener(buttonsProcessor);
+        cpSetBtn03.addActionListener(userActionsProcessor);
         cpSetBtn03.setActionCommand("Set checkpoint");
-        cpSetBtn04.addActionListener(buttonsProcessor);
+        cpSetBtn04.addActionListener(userActionsProcessor);
         cpSetBtn04.setActionCommand("Set checkpoint");
-        cpSetBtn05.addActionListener(buttonsProcessor);
+        cpSetBtn05.addActionListener(userActionsProcessor);
         cpSetBtn05.setActionCommand("Set checkpoint");
-        cpSetBtn06.addActionListener(buttonsProcessor);
+        cpSetBtn06.addActionListener(userActionsProcessor);
         cpSetBtn06.setActionCommand("Set checkpoint");
-        cpSetBtn07.addActionListener(buttonsProcessor);
+        cpSetBtn07.addActionListener(userActionsProcessor);
         cpSetBtn07.setActionCommand("Set checkpoint");
-        cpSetBtn08.addActionListener(buttonsProcessor);
+        cpSetBtn08.addActionListener(userActionsProcessor);
         cpSetBtn08.setActionCommand("Set checkpoint");
-        cpSetBtn09.addActionListener(buttonsProcessor);
+        cpSetBtn09.addActionListener(userActionsProcessor);
         cpSetBtn09.setActionCommand("Set checkpoint");
-        cpSetBtn10.addActionListener(buttonsProcessor);
+        cpSetBtn10.addActionListener(userActionsProcessor);
         cpSetBtn10.setActionCommand("Set checkpoint");
 
 
-        loadSettingsButton.addActionListener(buttonsProcessor);
-        loadSettingsButton.setActionCommand("Load settings");
 
-        reconnectButton.addActionListener(buttonsProcessor);
+        cpAddRoutePointButton01.addActionListener(userActionsProcessor);
+        cpAddRoutePointButton01.setActionCommand("Add route point");
+        cpAddRoutePointButton02.addActionListener(userActionsProcessor);
+        cpAddRoutePointButton02.setActionCommand("Add route point");
+        cpAddRoutePointButton03.addActionListener(userActionsProcessor);
+        cpAddRoutePointButton03.setActionCommand("Add route point");
+        cpAddRoutePointButton04.addActionListener(userActionsProcessor);
+        cpAddRoutePointButton04.setActionCommand("Add route point");
+        cpAddRoutePointButton05.addActionListener(userActionsProcessor);
+        cpAddRoutePointButton05.setActionCommand("Add route point");
+        cpAddRoutePointButton06.addActionListener(userActionsProcessor);
+        cpAddRoutePointButton06.setActionCommand("Add route point");
+        cpAddRoutePointButton07.addActionListener(userActionsProcessor);
+        cpAddRoutePointButton07.setActionCommand("Add route point");
+        cpAddRoutePointButton08.addActionListener(userActionsProcessor);
+        cpAddRoutePointButton08.setActionCommand("Add route point");
+        cpAddRoutePointButton09.addActionListener(userActionsProcessor);
+        cpAddRoutePointButton09.setActionCommand("Add route point");
+        cpAddRoutePointButton10.addActionListener(userActionsProcessor);
+        cpAddRoutePointButton10.setActionCommand("Add route point");
+
+
+        loadGameDataButton.addActionListener(userActionsProcessor);
+        loadGameDataButton.setActionCommand("Load game data");
+
+        reconnectButton.addActionListener(userActionsProcessor);
         reconnectButton.setActionCommand("Reconnect");
 
-        saveSettingsButton.addActionListener(buttonsProcessor);
-        saveSettingsButton.setActionCommand("Save settings");
+        saveGameDataButton.addActionListener(userActionsProcessor);
+        saveGameDataButton.setActionCommand("Save game data");
 
-        setPointButton.addActionListener(buttonsProcessor);
+        setPointButton.addActionListener(userActionsProcessor);
         setPointButton.setActionCommand("Set current location");
 
-        walkToButton.addActionListener(buttonsProcessor);
+        walkToButton.addActionListener(userActionsProcessor);
         walkToButton.setActionCommand("Walk to location");
+
+        loopThroughCheckpointsButton.addActionListener(userActionsProcessor);
+        loopThroughCheckpointsButton.setActionCommand("Loop through checkpoints");
+
+        clearRouteButton.addActionListener(userActionsProcessor);
+        clearRouteButton.setActionCommand("Clear route");
+
+
+        locatorSwitchButton.addActionListener(userActionsProcessor);
+        locatorSwitchButton.setActionCommand("Start/stop locator");
 
 
 
         keyReadingArea.addKeyListener(this);
 
-        position = new Coordinates();
 
 
-        updateMainData();
+
 
 
         checkBox1.addItemListener(new ItemListener() {
@@ -169,6 +245,22 @@ public class AshBurn implements KeyListener {
                 goFast=checkBox1.isSelected();
             }
         });
+
+
+
+
+        position = new Coordinates();
+
+
+
+        connectToPTC();
+
+        createMenu();
+
+        updateMainData();
+
+
+        refreshPokemons();
 
     }
 
@@ -179,7 +271,12 @@ public class AshBurn implements KeyListener {
         JFrame frame = new JFrame("AshBurn");
         frame.setContentPane(new AshBurn().contentPane);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("AshBurn v2.0 - Pokemon NoGo project");
+        frame.setTitle("AshBurn v4.2 Beta - Pokemon NoGo project");
+
+
+
+        frame.setJMenuBar(menuBar);
+
         frame.pack();
         frame.setVisible(true);
 
@@ -187,16 +284,44 @@ public class AshBurn implements KeyListener {
 
     }
 
+    private void createMenu(){
 
 
-    private class  ButtonProcessor implements ActionListener{
+        JMenu settingsMenu = new JMenu("Settings");
+        final JMenu aboutMenu = new JMenu("About");
+
+        JMenuItem settingsMenuItem = new JMenuItem("Edit");
+        settingsMenuItem.addActionListener(userActionsProcessor);
+        settingsMenuItem.setActionCommand("Edit settings");
+
+        settingsMenu.add(settingsMenuItem);
+        menuBar.add(settingsMenu);
+        menuBar.add(aboutMenu);
+
+
+    }
+
+
+    private class UserActionsProcessor implements ActionListener{
 
 
 
         public void actionPerformed(ActionEvent actionEvent) {
 
-            JButton sourceButton = (JButton)actionEvent.getSource();
-            String sourceButtonName = sourceButton.getName();
+            String sourceButtonName=null;
+
+            switch (actionEvent.getSource().getClass().toString()){
+                case "class javax.swing.JMenuItem":
+                    break;
+                case "class javax.swing.JButton":
+                    JButton sourceButton = (JButton)actionEvent.getSource();
+                    sourceButtonName = sourceButton.getName();
+                    break;
+            }
+
+
+
+
 
             String command = actionEvent.getActionCommand();
             actionEvent.paramString();
@@ -204,11 +329,11 @@ public class AshBurn implements KeyListener {
 
 
             switch(command){
-                case "Load settings":
-                    loadSettings();
+                case "Load game data":
+                    loadGameData();
                     break;
-                case "Save settings":
-                    saveSettings();
+                case "Save game data":
+                    saveGameData();
                     break;
                 case "Set current location":
                     setCurrentLocation();
@@ -225,6 +350,21 @@ public class AshBurn implements KeyListener {
                 case "Set checkpoint":
                     setCheckpoint(Integer.parseInt(sourceButtonName));
                     break;
+                case "Add route point":
+                    addRoutePoint(Integer.parseInt(sourceButtonName));
+                    break;
+                case "Loop through checkpoints":
+                    loopThroughCheckpoints();
+                    break;
+                case "Clear route":
+                    clearRoute();
+                    break;
+                case "Start/stop locator":
+                    startStopLocator();
+                    break;
+                case "Edit settings":
+                    showSettingsDialog();
+                    break;
 
             }
 
@@ -235,9 +375,171 @@ public class AshBurn implements KeyListener {
 
 
 
-    private void loadSettings(){
+    private void connectToPTC(){
 
-        dataManager.loadSettings();
+        serviceAccountPTC=dataManager.loadUserData();
+
+        if(serviceAccountPTC!=null) {
+            try {
+                requestProcessor = new RequestProcessor(serviceAccountPTC.LOGIN, serviceAccountPTC.PASSWORD);
+            } catch (Exception e) {
+                textArea1.setText("Failed to login to server\nRetrying in 10 seconds");
+                requestProcessor = null;
+                isRefreshEnabled=true;
+            }
+        }else {
+            textArea1.setText("Please check PTC login");
+            isRefreshEnabled=false;
+            locatorSwitchButton.setText("Start");
+        }
+
+
+    }
+
+
+
+
+    private void showSettingsDialog(){
+        Settings settingsDialog=new Settings();
+        settingsDialog.setLocationRelativeTo( null );
+        settingsDialog.pack();
+        settingsDialog.setVisible(true);
+
+    }
+
+
+    private void startStopLocator(){
+
+        if(isRefreshEnabled){
+            locatorSwitchButton.setText("Start");
+        }else {
+            locatorSwitchButton.setText("Stop");
+        }
+
+            isRefreshEnabled=!isRefreshEnabled;
+
+    }
+
+
+private void refreshPokemons(){
+
+
+
+    new Thread(new Runnable() {
+        @Override
+        public void run() {
+
+            ArrayList<PokemonData> catchablePokemons;
+
+            Coordinates target=new Coordinates();
+            int direction=0;
+
+            String compassDirection=null;
+
+            while (true) {
+
+
+
+                if(isRefreshEnabled) {
+
+                    if(requestProcessor==null){
+                        connectToPTC();
+                    }
+
+                    try {
+                        requestProcessor.setLocation(position.latitude, position.longitude);
+                        catchablePokemons = requestProcessor.findCatchablePokemons();
+                        textArea1.setText("");
+
+                        for (PokemonData pokemon : catchablePokemons) {
+
+
+                            target.latitude=pokemon.latitude;
+                            target.longitude=pokemon.longitude;
+
+                            direction=getDirection(target);
+
+                            switch (direction) {
+                                case 1:
+                                    compassDirection = "SW";
+                                    break;
+                                case 2:
+                                    compassDirection = "S";
+                                    break;
+                                case 3:
+                                    compassDirection = "SE";
+                                    break;
+                                case 4:
+                                    compassDirection = "W";
+                                    break;
+                                case 0:
+                                    compassDirection = "Here";
+                                    break;
+
+                                case 6:
+                                    compassDirection = "E";
+                                    break;
+                                case 7:
+                                    compassDirection = "NW";
+                                    break;
+                                case 8:
+                                    compassDirection = "N";
+                                    break;
+                                case 9:
+                                    compassDirection = "NE";
+                                    break;
+
+                            }
+
+
+                            //textArea1.append(pokemon.name + "\n" + pokemon.longitude.toString() + "\n" + pokemon.latitude.toString() + "\n\n");
+                            textArea1.append(pokemon.name + "\t Direction: " + compassDirection + "\n");
+                            textArea1.append(pokemon.longitude.toString() + "\n" + pokemon.latitude.toString() + "\n\n");
+
+
+                        }
+
+                    }catch (Exception e){
+                        textArea1.setText("Connection failed, retrying");
+                        try {
+                            sleep(2000);
+
+                            if(serviceAccountPTC.LOGIN!=null && serviceAccountPTC.PASSWORD!=null){
+                                requestProcessor.reconnect();
+                            }else {
+                                connectToPTC();
+                            }
+
+
+                        }catch (Exception ex){
+                            textArea1.setText("Login failed, will retry in 10 seconds");
+                        }
+
+
+                    }
+
+                }
+
+                sleep(REFRESH_TIME);
+
+            }
+
+        }
+    }).start();
+
+
+
+
+
+
+
+
+}
+
+
+    private void loadGameData(){
+
+        dataManager.loadGameData();
         Coordinates checkPoint;
 
         for (int i=1; i<=10 ; i++){
@@ -263,9 +565,9 @@ public class AshBurn implements KeyListener {
 
 
 
-    private void saveSettings(){
+    private void saveGameData(){
 
-        dataManager.saveSettings(position);
+        dataManager.saveGameData(position);
         messageBoard.setText("Settings saved to " + path + "AshBurn_saved_data.bin");
     }
 
@@ -276,6 +578,9 @@ public class AshBurn implements KeyListener {
 
         Double lon=0.0;
         Double lat=0.0;
+
+        isLoopEnabled=false;
+        isOnAutopilot=false;
 
         boolean operationFailed=false;
 
@@ -345,14 +650,107 @@ public class AshBurn implements KeyListener {
 
 
     private void goToCheckpoint(int id) {
+
+        isLoopEnabled=false;
+        isOnAutopilot=false;
+
         Coordinates target = dataManager.loadCheckpoint(id);
+
+        currentLoopTarget.setText("->" + target.name);
 
         autopilotToLocation(target);
     }
 
 
+
+    private void addRoutePoint(int id){
+
+
+        int size = routePoints.size();
+
+
+
+        if (size>0){
+            if (id != routePoints.get(size-1)) {
+                routePoints.add(id);
+                textRouteSequence.setText(textRouteSequence.getText() + "->" + id);
+            }
+        }else {
+            textRouteSequence.setText(id+"");
+            routePoints.add(id);
+        }
+
+
+    }
+
+
+    private void loopThroughCheckpoints(){
+
+        if (routePoints.size()>0) {
+
+            isLoopEnabled = false;
+
+            sleep(300);
+
+            isLoopEnabled = true;
+
+            if (loopTargetID != 0) {
+                loopTargetID--;
+            }
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+
+                    Coordinates target;
+
+
+                    while (isLoopEnabled) {
+
+
+                        if (loopTargetID >= routePoints.size()) {
+                            loopTargetID = 0;
+                        }
+
+
+                        while (loopTargetID < routePoints.size() && !isOnAutopilot) {
+                            target = dataManager.loadCheckpoint(routePoints.get(loopTargetID));
+                            currentLoopTarget.setText("->" + target.name);
+                            autopilotToLocation(target);
+                            loopTargetID++;
+
+                        }
+
+                        sleep(1000);
+
+
+                    }
+
+
+                }
+            }).start();
+
+
+        }
+        else {
+            currentLoopTarget.setText("No points added to the route");
+        }
+
+    }
+
+    private void clearRoute(){
+        isLoopEnabled=false;
+        isOnAutopilot=false;
+        loopTargetID=0;
+        textRouteSequence.setText("");
+        routePoints.clear();
+        currentLoopTarget.setText("");
+    }
+
     private void walkToLocation(){
 
+        isLoopEnabled=false;
+        isOnAutopilot=false;
 
         Coordinates target=new Coordinates();
 
@@ -576,6 +974,7 @@ public class AshBurn implements KeyListener {
 
     public void keyPressed(KeyEvent e) {
 
+        isLoopEnabled=false;
         isOnAutopilot=false;
 
         keyReadingArea.setText("");

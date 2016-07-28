@@ -11,6 +11,7 @@ public class DataManager {
     Coordinates position;
 
     private ArrayList<Coordinates> checkPoints=new ArrayList<>();
+    private ServiceAccount serviceAccount;
 
     public DataManager(){
 
@@ -23,7 +24,7 @@ public class DataManager {
     }
 
 
-    public  void saveSettings(){
+    public  void saveGameData(){
 
         try{
             FileOutputStream fos= new FileOutputStream("AshBurn_saved_data.bin");
@@ -39,7 +40,7 @@ public class DataManager {
 
 
 
-    public  void saveSettings(Coordinates position){
+    public  void saveGameData(Coordinates position){
 
         checkPoints.add(10,position);
 
@@ -59,7 +60,7 @@ public class DataManager {
 
 
 
-    public  void loadSettings(){
+    public  void loadGameData(){
 
 
         try
@@ -103,6 +104,53 @@ public class DataManager {
         checkPoints.set(id-1,checkPoint);
 
     }
+
+
+
+
+    public  ServiceAccount loadUserData(){
+
+
+        try
+        {
+            FileInputStream fis = new FileInputStream("AshBurn_PTC_account.bin");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            serviceAccount = (ServiceAccount) ois.readObject();
+            ois.close();
+            fis.close();
+        }catch(IOException ioe){
+            System.out.println("PTC file not found");
+            ioe.printStackTrace();
+            serviceAccount=null;
+        }catch(ClassNotFoundException c){
+            System.out.println("PTC Class not found");
+            //c.printStackTrace();
+            serviceAccount=null;
+
+        }
+
+        return serviceAccount;
+    }
+
+
+
+    public static void saveUserData(ServiceAccount serviceAccount){
+
+
+        try{
+            FileOutputStream fos= new FileOutputStream("AshBurn_PTC_account.bin");
+            ObjectOutputStream oos= new ObjectOutputStream(fos);
+            oos.writeObject(serviceAccount);
+            oos.close();
+            fos.close();
+        }catch(IOException ioe){
+            ioe.printStackTrace();
+        }
+
+    }
+
+
+
 
 
 

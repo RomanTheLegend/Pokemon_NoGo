@@ -1,654 +1,1091 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.pokemonnogo.ashburn.AshBurn">
-  <grid id="27dc6" binding="contentPane" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="contentPane" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="645" height="606"/>
+      <xy x="20" y="20" width="1184" height="801"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-391931"/>
+      <foreground color="-4473925"/>
+    </properties>
     <border type="none"/>
     <children>
-      <grid id="8d121" layout-manager="GridLayoutManager" row-count="2" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="3cea4" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="527" height="70"/>
-          </grid>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
-        <border type="etched" title="Current status"/>
+        <properties>
+          <background color="-391931"/>
+        </properties>
+        <border type="none" title="Navigation"/>
         <children>
-          <component id="8860b" class="javax.swing.JTextField" binding="LonMain">
-            <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="201" height="22"/>
-              </grid>
-            </constraints>
-            <properties/>
-          </component>
-          <component id="f0515" class="javax.swing.JTextField" binding="LatMain">
-            <constraints>
-              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="210" height="22"/>
-              </grid>
-            </constraints>
-            <properties>
-              <text value=""/>
-            </properties>
-          </component>
-          <component id="c2abe" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Latitude"/>
-            </properties>
-          </component>
-          <component id="222dd" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Longitude"/>
-            </properties>
-          </component>
-          <component id="82d7c" class="javax.swing.JButton" binding="loadSettingsButton" default-binding="true">
-            <constraints>
-              <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Load settings"/>
-            </properties>
-          </component>
-          <component id="1b23f" class="javax.swing.JButton" binding="saveSettingsButton" default-binding="true">
-            <constraints>
-              <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Save settings"/>
-            </properties>
-          </component>
-          <component id="20b57" class="javax.swing.JButton" binding="setPointButton" default-binding="true">
-            <constraints>
-              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Teleport to"/>
-            </properties>
-          </component>
-          <component id="80078" class="javax.swing.JTextArea" binding="keyReadingArea">
-            <constraints>
-              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="30" height="20"/>
-              </grid>
-            </constraints>
-            <properties/>
-          </component>
-          <component id="2e91a" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Go fast"/>
-            </properties>
-          </component>
-          <component id="a913d" class="javax.swing.JCheckBox" binding="checkBox1" default-binding="true">
-            <constraints>
-              <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <selected value="false"/>
-              <text value=""/>
-            </properties>
-          </component>
-          <component id="e58ba" class="javax.swing.JLabel" binding="dirLabel">
-            <constraints>
-              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="--"/>
-            </properties>
-          </component>
-          <component id="24b1f" class="javax.swing.JButton" binding="walkToButton" default-binding="true">
-            <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Walk to"/>
-            </properties>
-          </component>
-        </children>
-      </grid>
-      <grid id="d79c4" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="0" left="0" bottom="0" right="0"/>
-        <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties/>
-        <border type="none" title="Checkpoints"/>
-        <children>
-          <grid id="1aee4" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="8d121" layout-manager="GridLayoutManager" row-count="2" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="1" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="527" height="70"/>
+              </grid>
             </constraints>
-            <properties/>
-            <border type="none"/>
+            <properties>
+              <background color="-391931"/>
+            </properties>
+            <border type="etched" title="Current status"/>
             <children>
-              <grid id="2b57a" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <component id="8860b" class="javax.swing.JTextField" binding="LonMain">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="201" height="22"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-13567483"/>
+                </properties>
+              </component>
+              <component id="f0515" class="javax.swing.JTextField" binding="LatMain">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="210" height="22"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-13567483"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="c2abe" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Latitude"/>
+                </properties>
+              </component>
+              <component id="222dd" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Longitude"/>
+                </properties>
+              </component>
+              <component id="82d7c" class="javax.swing.JButton" binding="loadGameDataButton" default-binding="true">
+                <constraints>
+                  <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-16227229"/>
+                  <text value="Load game data"/>
+                </properties>
+              </component>
+              <component id="1b23f" class="javax.swing.JButton" binding="saveGameDataButton" default-binding="true">
+                <constraints>
+                  <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-16227229"/>
+                  <text value="Save game data"/>
+                </properties>
+              </component>
+              <component id="20b57" class="javax.swing.JButton" binding="setPointButton" default-binding="true">
+                <constraints>
+                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-11429127"/>
+                  <foreground color="-2171170"/>
+                  <text value="Teleport to"/>
+                </properties>
+              </component>
+              <component id="80078" class="javax.swing.JTextArea" binding="keyReadingArea">
+                <constraints>
+                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="30" height="20"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-15259583"/>
+                  <foreground color="-15259583"/>
+                </properties>
+              </component>
+              <component id="2e91a" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Go fast"/>
+                </properties>
+              </component>
+              <component id="a913d" class="javax.swing.JCheckBox" binding="checkBox1" default-binding="true">
+                <constraints>
+                  <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-391931"/>
+                  <foreground color="-15259583"/>
+                  <selected value="false"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="e58ba" class="javax.swing.JLabel" binding="dirLabel">
+                <constraints>
+                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="--"/>
+                </properties>
+              </component>
+              <component id="24b1f" class="javax.swing.JButton" binding="walkToButton" default-binding="true">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-11429127"/>
+                  <foreground color="-2171170"/>
+                  <text value="Walk to"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="c6c2f" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-391931"/>
+            </properties>
+            <border type="none" title="Loop travel"/>
+            <children>
+              <grid id="daaee" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="214" height="40"/>
+                  </grid>
                 </constraints>
-                <properties/>
-                <border type="etched"/>
+                <properties>
+                  <background color="-391931"/>
+                </properties>
+                <border type="none"/>
                 <children>
-                  <component id="b2323" class="javax.swing.JTextField" binding="cpName01">
+                  <component id="a8228" class="javax.swing.JButton" binding="loopThroughCheckpointsButton" default-binding="true">
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="9da9e" class="javax.swing.JLabel" binding="cpPos01">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="41" height="32"/>
-                      </grid>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="&lt;empty&gt;"/>
+                      <background color="-13600263"/>
+                      <foreground color="-2171170"/>
+                      <text value="Loop through checkpoints"/>
                     </properties>
                   </component>
-                  <component id="19f43" class="javax.swing.JButton" binding="cpSetBtn01">
+                  <component id="b7a8c" class="javax.swing.JButton" binding="clearRouteButton">
                     <constraints>
-                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="62" height="32"/>
-                      </grid>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <name value="01"/>
-                      <text value="Set point"/>
-                    </properties>
-                  </component>
-                  <component id="77282" class="javax.swing.JButton" binding="cpGoBtn01">
-                    <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <name value="01"/>
-                      <text value="Go here"/>
+                      <background color="-4087129"/>
+                      <text value="Clear"/>
                     </properties>
                   </component>
                 </children>
               </grid>
-              <grid id="e472" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="8b0f5" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties/>
-                <border type="etched"/>
+                <properties>
+                  <background color="-391931"/>
+                </properties>
+                <border type="none"/>
                 <children>
-                  <component id="543e9" class="javax.swing.JTextField" binding="cpName02">
+                  <component id="97c78" class="javax.swing.JTextField" binding="textRouteSequence">
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="92944" class="javax.swing.JLabel" binding="cpPos02">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="41" height="32"/>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                        <minimum-size width="200" height="-1"/>
+                        <preferred-size width="600" height="-1"/>
                       </grid>
                     </constraints>
                     <properties>
-                      <text value="&lt;empty&gt;"/>
+                      <background color="-8253159"/>
+                      <editable value="false"/>
+                      <foreground color="-11470331"/>
                     </properties>
                   </component>
-                  <component id="9e893" class="javax.swing.JButton" binding="cpSetBtn02">
+                  <component id="71493" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="62" height="32"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="107" height="14"/>
                       </grid>
                     </constraints>
                     <properties>
-                      <name value="02"/>
-                      <text value="Set point"/>
+                      <text value="Current route:"/>
                     </properties>
                   </component>
-                  <component id="81674" class="javax.swing.JButton" binding="cpGoBtn02">
+                  <component id="f65b6" class="javax.swing.JLabel" binding="currentLoopTarget">
                     <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <name value="02"/>
-                      <text value="Go here"/>
+                      <text value="-&gt;"/>
                     </properties>
                   </component>
-                </children>
-              </grid>
-              <grid id="a3a1" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
-                <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties/>
-                <border type="etched"/>
-                <children>
-                  <component id="eaf0f" class="javax.swing.JTextField" binding="cpName03">
+                  <hspacer id="4cf65">
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
-                    <properties/>
-                  </component>
-                  <component id="b48fb" class="javax.swing.JLabel" binding="cpPos03">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="41" height="32"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <text value="&lt;empty&gt;"/>
-                    </properties>
-                  </component>
-                  <component id="74e5f" class="javax.swing.JButton" binding="cpSetBtn03">
-                    <constraints>
-                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="62" height="32"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <name value="03"/>
-                      <text value="Set point"/>
-                    </properties>
-                  </component>
-                  <component id="6cd21" class="javax.swing.JButton" binding="cpGoBtn03">
-                    <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <name value="03"/>
-                      <text value="Go here"/>
-                    </properties>
-                  </component>
-                </children>
-              </grid>
-              <grid id="2db6f" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
-                <constraints>
-                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties/>
-                <border type="etched"/>
-                <children>
-                  <component id="a64ed" class="javax.swing.JTextField" binding="cpName04">
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <text value=""/>
-                    </properties>
-                  </component>
-                  <component id="234c1" class="javax.swing.JLabel" binding="cpPos04">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="41" height="32"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <text value="&lt;empty&gt;"/>
-                    </properties>
-                  </component>
-                  <component id="82f53" class="javax.swing.JButton" binding="cpSetBtn04">
-                    <constraints>
-                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="62" height="32"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <name value="04"/>
-                      <text value="Set point"/>
-                    </properties>
-                  </component>
-                  <component id="50980" class="javax.swing.JButton" binding="cpGoBtn04">
-                    <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <name value="04"/>
-                      <text value="Go here"/>
-                    </properties>
-                  </component>
-                </children>
-              </grid>
-              <grid id="d78f3" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
-                <constraints>
-                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties/>
-                <border type="etched"/>
-                <children>
-                  <component id="fc77c" class="javax.swing.JTextField" binding="cpName05">
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="6b60a" class="javax.swing.JLabel" binding="cpPos05">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="41" height="32"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <text value="&lt;empty&gt;"/>
-                    </properties>
-                  </component>
-                  <component id="30f37" class="javax.swing.JButton" binding="cpSetBtn05">
-                    <constraints>
-                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="62" height="32"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <name value="05"/>
-                      <text value="Set point"/>
-                    </properties>
-                  </component>
-                  <component id="3a095" class="javax.swing.JButton" binding="cpGoBtn05">
-                    <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <name value="05"/>
-                      <text value="Go here"/>
-                    </properties>
-                  </component>
+                  </hspacer>
                 </children>
               </grid>
             </children>
           </grid>
-          <grid id="350a2" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="d79c4" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties/>
-            <border type="none"/>
+            <properties>
+              <background color="-391931"/>
+            </properties>
+            <border type="none" title="Checkpoints"/>
             <children>
-              <grid id="3aad1" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="1aee4" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties/>
-                <border type="etched"/>
+                <properties>
+                  <background color="-391931"/>
+                </properties>
+                <border type="none"/>
                 <children>
-                  <component id="be871" class="javax.swing.JTextField" binding="cpName06">
+                  <grid id="2b57a" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="deccc" class="javax.swing.JLabel" binding="cpPos06">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="41" height="32"/>
-                      </grid>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="&lt;empty&gt;"/>
+                      <background color="-391931"/>
                     </properties>
-                  </component>
-                  <component id="5531c" class="javax.swing.JButton" binding="cpSetBtn06">
+                    <border type="etched"/>
+                    <children>
+                      <component id="b2323" class="javax.swing.JTextField" binding="cpName01">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-419579"/>
+                        </properties>
+                      </component>
+                      <component id="9da9e" class="javax.swing.JLabel" binding="cpPos01">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                            <preferred-size width="41" height="32"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <text value="&lt;empty&gt;"/>
+                        </properties>
+                      </component>
+                      <component id="77282" class="javax.swing.JButton" binding="cpGoBtn01">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-11470331"/>
+                          <name value="01"/>
+                          <text value="Go here"/>
+                        </properties>
+                      </component>
+                      <component id="19f43" class="javax.swing.JButton" binding="cpSetBtn01">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="-1" height="16"/>
+                            <maximum-size width="60" height="16"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-16750746"/>
+                          <name value="01"/>
+                          <text value="Set"/>
+                        </properties>
+                      </component>
+                      <component id="3fe52" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="DejaVu Sans Mono" size="16" style="1"/>
+                          <text value="1"/>
+                        </properties>
+                      </component>
+                      <component id="41f1a" class="javax.swing.JButton" binding="cpAddRoutePointButton01">
+                        <constraints>
+                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-367355"/>
+                          <foreground color="-14540255"/>
+                          <name value="01"/>
+                          <text value="Add to route"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="e472" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
-                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="62" height="32"/>
-                      </grid>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <name value="06"/>
-                      <text value="Set point"/>
+                      <background color="-391931"/>
                     </properties>
-                  </component>
-                  <component id="e2bd4" class="javax.swing.JButton" binding="cpGoBtn06">
+                    <border type="etched"/>
+                    <children>
+                      <component id="543e9" class="javax.swing.JTextField" binding="cpName02">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-419579"/>
+                        </properties>
+                      </component>
+                      <component id="92944" class="javax.swing.JLabel" binding="cpPos02">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                            <preferred-size width="41" height="32"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <text value="&lt;empty&gt;"/>
+                        </properties>
+                      </component>
+                      <component id="c2165" class="javax.swing.JButton" binding="cpAddRoutePointButton02">
+                        <constraints>
+                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-367355"/>
+                          <foreground color="-14540255"/>
+                          <name value="02"/>
+                          <text value="Add to route"/>
+                        </properties>
+                      </component>
+                      <component id="81674" class="javax.swing.JButton" binding="cpGoBtn02">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-11470331"/>
+                          <name value="02"/>
+                          <text value="Go here"/>
+                        </properties>
+                      </component>
+                      <component id="9e893" class="javax.swing.JButton" binding="cpSetBtn02">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="-1" height="16"/>
+                            <maximum-size width="60" height="16"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-16750746"/>
+                          <name value="02"/>
+                          <text value="Set"/>
+                        </properties>
+                      </component>
+                      <component id="1cd78" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="DejaVu Sans Mono" size="16" style="1"/>
+                          <text value="2"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="a3a1" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <name value="06"/>
-                      <text value="Go here"/>
+                      <background color="-391931"/>
                     </properties>
-                  </component>
+                    <border type="etched"/>
+                    <children>
+                      <component id="eaf0f" class="javax.swing.JTextField" binding="cpName03">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-419579"/>
+                        </properties>
+                      </component>
+                      <component id="b48fb" class="javax.swing.JLabel" binding="cpPos03">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                            <preferred-size width="41" height="32"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <text value="&lt;empty&gt;"/>
+                        </properties>
+                      </component>
+                      <component id="b1c1a" class="javax.swing.JButton" binding="cpAddRoutePointButton03">
+                        <constraints>
+                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-367355"/>
+                          <foreground color="-14540255"/>
+                          <name value="03"/>
+                          <text value="Add to route"/>
+                        </properties>
+                      </component>
+                      <component id="6cd21" class="javax.swing.JButton" binding="cpGoBtn03">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-11470331"/>
+                          <name value="03"/>
+                          <text value="Go here"/>
+                        </properties>
+                      </component>
+                      <component id="74e5f" class="javax.swing.JButton" binding="cpSetBtn03">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="-1" height="16"/>
+                            <maximum-size width="60" height="16"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-16750746"/>
+                          <name value="03"/>
+                          <text value="Set"/>
+                        </properties>
+                      </component>
+                      <component id="1f031" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="DejaVu Sans Mono" size="16" style="1"/>
+                          <text value="3"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="2db6f" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-391931"/>
+                    </properties>
+                    <border type="etched"/>
+                    <children>
+                      <component id="a64ed" class="javax.swing.JTextField" binding="cpName04">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-419579"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="234c1" class="javax.swing.JLabel" binding="cpPos04">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                            <preferred-size width="41" height="32"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <text value="&lt;empty&gt;"/>
+                        </properties>
+                      </component>
+                      <component id="d887a" class="javax.swing.JButton" binding="cpAddRoutePointButton04">
+                        <constraints>
+                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-367355"/>
+                          <foreground color="-14540255"/>
+                          <name value="04"/>
+                          <text value="Add to route"/>
+                        </properties>
+                      </component>
+                      <component id="50980" class="javax.swing.JButton" binding="cpGoBtn04">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-11470331"/>
+                          <name value="04"/>
+                          <text value="Go here"/>
+                        </properties>
+                      </component>
+                      <component id="82f53" class="javax.swing.JButton" binding="cpSetBtn04">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="-1" height="16"/>
+                            <maximum-size width="60" height="16"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-16750746"/>
+                          <name value="04"/>
+                          <text value="Set"/>
+                        </properties>
+                      </component>
+                      <component id="8a25d" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="DejaVu Sans Mono" size="16" style="1"/>
+                          <text value="4"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="d78f3" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-391931"/>
+                    </properties>
+                    <border type="etched"/>
+                    <children>
+                      <component id="fc77c" class="javax.swing.JTextField" binding="cpName05">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-419579"/>
+                        </properties>
+                      </component>
+                      <component id="6b60a" class="javax.swing.JLabel" binding="cpPos05">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                            <preferred-size width="41" height="32"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <text value="&lt;empty&gt;"/>
+                        </properties>
+                      </component>
+                      <component id="b0b90" class="javax.swing.JButton" binding="cpAddRoutePointButton05">
+                        <constraints>
+                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-367355"/>
+                          <foreground color="-14540255"/>
+                          <name value="05"/>
+                          <text value="Add to route"/>
+                        </properties>
+                      </component>
+                      <component id="3a095" class="javax.swing.JButton" binding="cpGoBtn05">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-11470331"/>
+                          <name value="05"/>
+                          <text value="Go here"/>
+                        </properties>
+                      </component>
+                      <component id="30f37" class="javax.swing.JButton" binding="cpSetBtn05">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="-1" height="16"/>
+                            <maximum-size width="60" height="16"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-16750746"/>
+                          <name value="05"/>
+                          <text value="Set"/>
+                        </properties>
+                      </component>
+                      <component id="602ee" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="DejaVu Sans Mono" size="16" style="1"/>
+                          <text value="5"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
                 </children>
               </grid>
-              <grid id="efc8d" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="350a2" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties/>
-                <border type="etched"/>
+                <properties>
+                  <background color="-391931"/>
+                </properties>
+                <border type="none"/>
                 <children>
-                  <component id="336ac" class="javax.swing.JTextField" binding="cpName07">
+                  <grid id="3aad1" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="9128e" class="javax.swing.JLabel" binding="cpPos07">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="41" height="32"/>
-                      </grid>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="&lt;empty&gt;"/>
+                      <background color="-391931"/>
                     </properties>
-                  </component>
-                  <component id="65772" class="javax.swing.JButton" binding="cpSetBtn07">
+                    <border type="etched"/>
+                    <children>
+                      <component id="be871" class="javax.swing.JTextField" binding="cpName06">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-419579"/>
+                        </properties>
+                      </component>
+                      <component id="deccc" class="javax.swing.JLabel" binding="cpPos06">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                            <preferred-size width="41" height="32"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <text value="&lt;empty&gt;"/>
+                        </properties>
+                      </component>
+                      <component id="2a24f" class="javax.swing.JButton" binding="cpAddRoutePointButton06">
+                        <constraints>
+                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-367355"/>
+                          <foreground color="-14540255"/>
+                          <multiClickThreshhold value="0"/>
+                          <name value="06"/>
+                          <text value="Add to route"/>
+                        </properties>
+                      </component>
+                      <component id="e2bd4" class="javax.swing.JButton" binding="cpGoBtn06">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-11470331"/>
+                          <name value="06"/>
+                          <text value="Go here"/>
+                        </properties>
+                      </component>
+                      <component id="5531c" class="javax.swing.JButton" binding="cpSetBtn06">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="-1" height="16"/>
+                            <maximum-size width="60" height="16"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-16750746"/>
+                          <name value="06"/>
+                          <text value="Set"/>
+                        </properties>
+                      </component>
+                      <component id="ec889" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="DejaVu Sans Mono" size="16" style="1"/>
+                          <text value="6"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="efc8d" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
-                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="62" height="32"/>
-                      </grid>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <name value="07"/>
-                      <text value="Set point"/>
+                      <background color="-391931"/>
                     </properties>
-                  </component>
-                  <component id="a4777" class="javax.swing.JButton" binding="cpGoBtn07">
+                    <border type="etched"/>
+                    <children>
+                      <component id="336ac" class="javax.swing.JTextField" binding="cpName07">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-419579"/>
+                        </properties>
+                      </component>
+                      <component id="9128e" class="javax.swing.JLabel" binding="cpPos07">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                            <preferred-size width="41" height="32"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <text value="&lt;empty&gt;"/>
+                        </properties>
+                      </component>
+                      <component id="e95aa" class="javax.swing.JButton" binding="cpAddRoutePointButton07">
+                        <constraints>
+                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-367355"/>
+                          <foreground color="-14540255"/>
+                          <name value="07"/>
+                          <text value="Add to route"/>
+                        </properties>
+                      </component>
+                      <component id="a4777" class="javax.swing.JButton" binding="cpGoBtn07">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-11470331"/>
+                          <name value="07"/>
+                          <text value="Go here"/>
+                        </properties>
+                      </component>
+                      <component id="65772" class="javax.swing.JButton" binding="cpSetBtn07">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="-1" height="16"/>
+                            <maximum-size width="60" height="16"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-16750746"/>
+                          <name value="07"/>
+                          <text value="Set"/>
+                        </properties>
+                      </component>
+                      <component id="a1d87" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="DejaVu Sans Mono" size="16" style="1"/>
+                          <text value="7"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="26fc0" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <name value="07"/>
-                      <text value="Go here"/>
+                      <background color="-391931"/>
                     </properties>
-                  </component>
-                </children>
-              </grid>
-              <grid id="26fc0" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
-                <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties/>
-                <border type="etched"/>
-                <children>
-                  <component id="9ad8b" class="javax.swing.JTextField" binding="cpName08">
+                    <border type="etched"/>
+                    <children>
+                      <component id="9ad8b" class="javax.swing.JTextField" binding="cpName08">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-419579"/>
+                        </properties>
+                      </component>
+                      <component id="a3f1c" class="javax.swing.JLabel" binding="cpPos08">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                            <preferred-size width="41" height="32"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <text value="&lt;empty&gt;"/>
+                        </properties>
+                      </component>
+                      <component id="7920" class="javax.swing.JButton" binding="cpAddRoutePointButton08">
+                        <constraints>
+                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-367355"/>
+                          <foreground color="-14540255"/>
+                          <name value="08"/>
+                          <text value="Add to route"/>
+                        </properties>
+                      </component>
+                      <component id="53ed0" class="javax.swing.JButton" binding="cpGoBtn08">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-11470331"/>
+                          <name value="08"/>
+                          <text value="Go here"/>
+                        </properties>
+                      </component>
+                      <component id="a9383" class="javax.swing.JButton" binding="cpSetBtn08">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="-1" height="16"/>
+                            <maximum-size width="60" height="16"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-16750746"/>
+                          <name value="08"/>
+                          <text value="Set"/>
+                        </properties>
+                      </component>
+                      <component id="915e8" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="DejaVu Sans Mono" size="16" style="1"/>
+                          <text value="8"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="5f3c" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="a3f1c" class="javax.swing.JLabel" binding="cpPos08">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="41" height="32"/>
-                      </grid>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="&lt;empty&gt;"/>
+                      <background color="-391931"/>
                     </properties>
-                  </component>
-                  <component id="a9383" class="javax.swing.JButton" binding="cpSetBtn08">
+                    <border type="etched"/>
+                    <children>
+                      <component id="b013a" class="javax.swing.JTextField" binding="cpName09">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-419579"/>
+                        </properties>
+                      </component>
+                      <component id="4ebac" class="javax.swing.JLabel" binding="cpPos09">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                            <preferred-size width="41" height="32"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <text value="&lt;empty&gt;"/>
+                        </properties>
+                      </component>
+                      <component id="e4b22" class="javax.swing.JButton" binding="cpAddRoutePointButton09">
+                        <constraints>
+                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-367355"/>
+                          <foreground color="-14540255"/>
+                          <name value="09"/>
+                          <text value="Add to route"/>
+                        </properties>
+                      </component>
+                      <component id="7bfe8" class="javax.swing.JButton" binding="cpGoBtn09">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-11470331"/>
+                          <name value="09"/>
+                          <text value="Go here"/>
+                        </properties>
+                      </component>
+                      <component id="8088d" class="javax.swing.JButton" binding="cpSetBtn09">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="-1" height="16"/>
+                            <maximum-size width="60" height="16"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-16750746"/>
+                          <name value="09"/>
+                          <text value="Set"/>
+                        </properties>
+                      </component>
+                      <component id="cc6c0" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="DejaVu Sans Mono" size="16" style="1"/>
+                          <text value="9"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="8403d" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
-                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="62" height="32"/>
-                      </grid>
+                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <name value="08"/>
-                      <text value="Set point"/>
+                      <background color="-391931"/>
                     </properties>
-                  </component>
-                  <component id="53ed0" class="javax.swing.JButton" binding="cpGoBtn08">
-                    <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <name value="08"/>
-                      <text value="Go here"/>
-                    </properties>
-                  </component>
-                </children>
-              </grid>
-              <grid id="5f3c" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
-                <constraints>
-                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties/>
-                <border type="etched"/>
-                <children>
-                  <component id="b013a" class="javax.swing.JTextField" binding="cpName09">
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="4ebac" class="javax.swing.JLabel" binding="cpPos09">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="41" height="32"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <text value="&lt;empty&gt;"/>
-                    </properties>
-                  </component>
-                  <component id="8088d" class="javax.swing.JButton" binding="cpSetBtn09">
-                    <constraints>
-                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="62" height="32"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <name value="09"/>
-                      <text value="Set point"/>
-                    </properties>
-                  </component>
-                  <component id="7bfe8" class="javax.swing.JButton" binding="cpGoBtn09">
-                    <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <name value="09"/>
-                      <text value="Go here"/>
-                    </properties>
-                  </component>
-                </children>
-              </grid>
-              <grid id="8403d" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
-                <constraints>
-                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties/>
-                <border type="etched"/>
-                <children>
-                  <component id="9fc2f" class="javax.swing.JTextField" binding="cpName10">
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="82f9" class="javax.swing.JLabel" binding="cpPos10">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="41" height="32"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <text value="&lt;empty&gt;"/>
-                    </properties>
-                  </component>
-                  <component id="35db3" class="javax.swing.JButton" binding="cpSetBtn10">
-                    <constraints>
-                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="62" height="32"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <name value="10"/>
-                      <text value="Set point"/>
-                    </properties>
-                  </component>
-                  <component id="81173" class="javax.swing.JButton" binding="cpGoBtn10">
-                    <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <name value="10"/>
-                      <text value="Go here"/>
-                    </properties>
-                  </component>
+                    <border type="etched"/>
+                    <children>
+                      <component id="9fc2f" class="javax.swing.JTextField" binding="cpName10">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-419579"/>
+                        </properties>
+                      </component>
+                      <component id="82f9" class="javax.swing.JLabel" binding="cpPos10">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                            <preferred-size width="41" height="32"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <text value="&lt;empty&gt;"/>
+                        </properties>
+                      </component>
+                      <component id="6457f" class="javax.swing.JButton" binding="cpAddRoutePointButton10">
+                        <constraints>
+                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-367355"/>
+                          <foreground color="-14540255"/>
+                          <name value="10"/>
+                          <text value="Add to route"/>
+                        </properties>
+                      </component>
+                      <component id="81173" class="javax.swing.JButton" binding="cpGoBtn10">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-11470331"/>
+                          <name value="10"/>
+                          <text value="Go here"/>
+                        </properties>
+                      </component>
+                      <component id="35db3" class="javax.swing.JButton" binding="cpSetBtn10">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="-1" height="16"/>
+                            <maximum-size width="60" height="16"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-16750746"/>
+                          <name value="10"/>
+                          <text value="Set"/>
+                        </properties>
+                      </component>
+                      <component id="d5cb5" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="DejaVu Sans Mono" size="16" style="1"/>
+                          <text value="10"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
                 </children>
               </grid>
             </children>
           </grid>
+          <component id="bc7e9" class="javax.swing.JTextField" binding="messageBoard">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-14202253"/>
+              <editable value="false"/>
+              <foreground color="-419579"/>
+            </properties>
+          </component>
+          <component id="911b" class="javax.swing.JButton" binding="reconnectButton" default-binding="true">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-4087129"/>
+              <text value="Reconnect"/>
+            </properties>
+          </component>
         </children>
       </grid>
-      <component id="911b" class="javax.swing.JButton" binding="reconnectButton" default-binding="true">
+      <grid id="247c7" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Reconnect"/>
-        </properties>
-      </component>
-      <component id="bc7e9" class="javax.swing.JTextField" binding="messageBoard">
-        <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="4" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="200" height="-1"/>
+            <preferred-size width="250" height="-1"/>
           </grid>
         </constraints>
         <properties>
-          <editable value="false"/>
+          <background color="-391931"/>
         </properties>
-      </component>
+        <border type="none" title="Pokemon locator"/>
+        <children>
+          <component id="dbbc7" class="javax.swing.JButton" binding="locatorSwitchButton" default-binding="true">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-4087129"/>
+              <text value="Stop"/>
+            </properties>
+          </component>
+          <component id="5ff4b" class="javax.swing.JTextArea" binding="textArea1" default-binding="true">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-13567483"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
     </children>
   </grid>
 </form>

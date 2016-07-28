@@ -253,6 +253,7 @@ class NetworkModule implements Runnable {
 
         }catch (Exception expected){
             sendMessage("Client disconnected");
+            sendNotification("No clients connected");
 
 
             if( socketListener.isClosed()){
