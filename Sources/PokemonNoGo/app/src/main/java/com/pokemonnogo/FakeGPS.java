@@ -63,7 +63,7 @@ public class FakeGPS {
                 locationManager.setTestProviderLocation(GPS_MOCK_PROVIDER, location);
 
 
-                Log.i(GPS_MOCK_PROVIDER,location.toString());
+                //Log.i(GPS_MOCK_PROVIDER,location.toString());
 
 
 

@@ -80,14 +80,14 @@ public class CommandCenter extends Service {
 
 
 
-        networkModule=new NetworkModule();
+
 
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-
+        networkModule=new NetworkModule();
 
 
         if(!isServiceRunning){
@@ -139,7 +139,7 @@ public class CommandCenter extends Service {
             try {
                 thread.interrupt();
             }catch (Exception e) {
-
+                sendMessage(e.getMessage());
             }
         }
 
@@ -190,12 +190,19 @@ class NetworkModule implements Runnable {
     public NetworkModule(){
         try {
             socketListener = new ServerSocket(9090);
-            fakeGPS=new FakeGPS();
             isRunning=true;
             isReady=true;
         } catch (Exception e) {
             sendMessage("Failed to open socket");
+            sendMessage(e.getMessage());
             e.printStackTrace();
+        }
+
+        try{
+            fakeGPS=new FakeGPS();
+        }catch (Exception e){
+            sendMessage("Failed to start fake GPS");
+            sendMessage(e.getMessage());
         }
 
     }
@@ -286,6 +293,7 @@ class NetworkModule implements Runnable {
                 sendMessage("Stop accepting client connections");
             } catch (Exception expected) {
                 sendMessage("Error closing connection");
+                sendMessage(expected.getMessage());
             }
         }
 
@@ -298,6 +306,7 @@ class NetworkModule implements Runnable {
                 sendMessage("Socket closed");
             } catch (Exception expected) {
                 sendMessage("Error closing socket");
+                sendMessage(expected.getMessage());
             }
 
         }

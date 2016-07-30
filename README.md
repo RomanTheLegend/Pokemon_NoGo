@@ -51,6 +51,7 @@ Please give follow up or contact me here. Any feedback is much appreciated.
 6. Go to "Download" inside of "Xposed Installer" hit the magnifying search button and write "Mock Mock Locations" , we click it, swipe to the right and install it.
 7. Reboot
 8. Go to "Xposed Installer" -> "Modules" and make sure the box to the right of "Mock Mock Locations" is ticked
+9. Click the "Mock Mock Location", uncheck "All apps" option, click "Add app" and look for Pokemon Go
 9. Another reboot
 10. Go to android settings (not NOX settings) and enable "Allow mock location" in Developer options
 11. Install and launch terminal emulator
