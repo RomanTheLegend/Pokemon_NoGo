@@ -52,8 +52,9 @@ Please give follow up or contact me here. Any feedback is much appreciated.
 7. Reboot
 8. Go to "Xposed Installer" -> "Modules" and make sure the box to the right of "Mock Mock Locations" is ticked
 9. Another reboot
-10. Go to android settings (not NOX settings) and enable "Allow mock location" in Developer options
-11. Install and launch terminal emulator
+10. Go to android settings (not NOX settings) and enable "Developer Mode" by going to "About tablet" and tapping "Build number" 7 times
+11. Go to android settings (not NOX settings) and enable "Allow mock location" in Developer options
+12. Install and launch terminal emulator
 ```
 su
 mv /system/lib/hw/gps.nox.so /system/lib/hw/gps.nox.so.bcp
