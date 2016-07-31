@@ -40,22 +40,24 @@ Please give follow up or contact me here. Any feedback is much appreciated.
 ## How to setup
 (Youtube video with installation steps and client demo will come in the next few days)
 
-1. Download latest Pokemon NoGo files (v4.2 beta)
+1. Download latest Pokemon NoGo files (v4.3 alpha)
 2. Install NOX player, launch it and go to settings:	
 	* Under "General" make sure that "Root" is ON
 	* Under "Advanced" set "Performance Settings" to "High".
 	* Restart	
-3. Install Xposed framework
-4. Open "Xposed Installer" click on "Framework" and click the "Install/Update". After it finishes it will ask to reboot. DO NOT LET IT REBOOT, choose "Soft reboot" instead.
-5. After rebook verify that everything under "Framework" is installed. If not - install again
-6. Go to "Download" inside of "Xposed Installer" hit the magnifying search button and write "Mock Mock Locations" , we click it, swipe to the right and install it.
-7. Reboot
-8. Go to "Xposed Installer" -> "Modules" and make sure the box to the right of "Mock Mock Locations" is ticked
-9. Click the "Mock Mock Location", uncheck "All apps" option, click "Add app" and look for Pokemon Go
-9. Another reboot
-10. Go to android settings (not NOX settings) and enable "Developer Mode" by going to "About tablet" and tapping "Build number" 7 times
-11. Go to android settings (not NOX settings) and enable "Allow mock location" in Developer options
-12. Install and launch terminal emulator
+3. Go to android settings (not NOX settings) and enable "Developer Mode" by going to "About tablet" and tapping "Build number" 7 times
+4. Go to android settings (not NOX settings) and enable "USB debugging" and "Allow mock location" in Developer options
+5. Install Xposed framework (click on icon on the right side panel of NOX player. It looks like box with APK inside and arrow)
+6. Open "Xposed Installer" click on "Framework" and click the "Install/Update". When system asks for Root access select "Remember choice forever" and click Allow. After it finishes it will ask to reboot. DO NOT LET IT REBOOT, choose "Soft reboot" instead.
+7. After rebook verify that everything under "Framework" is installed. If not - install again
+8. Go to "Download" inside of "Xposed Installer" hit the magnifying search button and write "Mock Mock Locations" , we click it, swipe to the right and install it.
+9. Reboot
+10. Go to "Xposed Installer" -> "Modules" and make sure the box to the right of "Mock Mock Locations" is ticked
+11. Install Pokemon GO
+12. Click the "Mock Mock Location", uncheck "All apps" option, click "Add app" and look for Pokemon Go
+13. Another reboot
+
+1. Install and launch terminal emulator
 ```
 su
 mv /system/lib/hw/gps.nox.so /system/lib/hw/gps.nox.so.bcp
@@ -70,7 +72,7 @@ find / -name "*gps*"
 and then rename it and reboot
 
 
-12. Install Pokemon NoGo .apk file and launch it
+12. Install Pokemon NoGo .apk file and launch it (click on Start - you should see "Waiting for client connection")
 13. Click "Start"
 14. Open Windows command line 
 15. Right click on NOX icon -> Properties -> Open File Location. Then locate nox_adb.exe in that folder and drag it to command line
@@ -85,8 +87,9 @@ and then rename it and reboot
 ``` 
 where path to nox_adb.exe might be different on different systems
 
-15. Launch Pokemon GO, launch AshBurn client and enjoy the game
-16. To enable Pokemon locator, please provide your secondary PTC login in AshBurn client under Settings
+16. Launch AshBurn client, make sure that Pokemon NoGo log window has "Client connection dtected"
+17. Launch Pokemon GO and enjoy the game :)
+18. To enable Pokemon locator, please provide your secondary PTC login in AshBurn client under Settings
 
 
 
