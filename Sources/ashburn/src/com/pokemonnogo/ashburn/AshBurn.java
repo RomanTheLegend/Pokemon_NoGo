@@ -3,6 +3,10 @@ package com.pokemonnogo.ashburn;
 
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -85,14 +89,19 @@ public class AshBurn implements KeyListener {
     private JButton cpAddRoutePointButton10;
     private JLabel currentLoopTarget;
     private JButton locatorSwitchButton;
-    private JTextArea textArea1;
+
+    private JTable detectorTable;
+    private JScrollPane scrollPane;
+    private JTextField detectorMessages;
     private static JMenuBar menuBar = new JMenuBar();
+    private DefaultTableModel tableModel = new DefaultTableModel();
 
     private ArrayList<JLabel> cpPositionLabels;
     private ArrayList<JTextField> cpNames;
 
 
     private UserActionsProcessor userActionsProcessor;
+    private UserClickProcessor userCickProcessor;
 
     private SignalProcessor signalProcessor;
     private DataManager dataManager;
@@ -115,13 +124,17 @@ public class AshBurn implements KeyListener {
 
     private boolean isRefreshEnabled=true;
 
-    private final long REFRESH_TIME=5000;
+    private final long REFRESH_TIME_SECONDS=10;
 
+    private Semaphore semaphore = new Semaphore();
+
+    private List<Coordinates> detectedPokemons= new ArrayList<>();
 
     public AshBurn() {
 
 
         userActionsProcessor = new UserActionsProcessor();
+        userCickProcessor = new UserClickProcessor();
         signalProcessor = new SignalProcessor();
         dataManager = new DataManager();
         routePoints = new ArrayList<>();
@@ -232,12 +245,15 @@ public class AshBurn implements KeyListener {
         locatorSwitchButton.setActionCommand("Start/stop locator");
 
 
+        detectorTable.setModel(tableModel);
+        detectorTable.addMouseListener(userCickProcessor);
+
+
 
         keyReadingArea.addKeyListener(this);
 
 
-
-
+        setDetectorTableStyle();
 
 
         checkBox1.addItemListener(new ItemListener() {
@@ -271,7 +287,7 @@ public class AshBurn implements KeyListener {
         JFrame frame = new JFrame("AshBurn");
         frame.setContentPane(new AshBurn().contentPane);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("AshBurn v4.2 Beta - Pokemon NoGo project");
+        frame.setTitle("AshBurn v4.3 Alpha - Pokemon NoGo project");
 
 
 
@@ -301,8 +317,71 @@ public class AshBurn implements KeyListener {
 
     }
 
+    private void setDetectorTableStyle(){
+
+        tableModel.addColumn("Pokemon");
+        tableModel.addColumn("Direction");
+        tableModel.addColumn("Action");
+
+        TableColumnModel columnModel = detectorTable.getColumnModel();
+
+        columnModel.getColumn(2).setCellRenderer(
+                new DefaultTableCellRenderer(){
+                    @Override
+                    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                        setText("Go!");
+                        setHorizontalAlignment(SwingConstants.CENTER);
+                        setBackground(new Color(81,154,249));
+                        addMouseListener(userCickProcessor);
+                        return this;
+                    }
+
+                }
+        );
+
+
+         scrollPane.getViewport().setBackground(new Color(86,154,5));
+
+
+
+    }
+
+
+
+
+    private class UserClickProcessor implements MouseListener{
+
+        public void mouseEntered(MouseEvent e){}
+        public void mousePressed(MouseEvent e){}
+        public void mouseReleased(MouseEvent e){}
+        public void mouseExited(MouseEvent e){}
+
+        public void mouseClicked(MouseEvent mouseEvent){
+            Point clickPoint=mouseEvent.getPoint();
+            JTable target = (JTable) mouseEvent.getSource();
+            int pokemonID = target.rowAtPoint(clickPoint);
+            int column = target.columnAtPoint(clickPoint);
+
+            if(column==2){
+                try{
+                    Coordinates selectedPokemon=detectedPokemons.get(pokemonID);
+                    autopilotToLocation(selectedPokemon);
+                }catch (Exception e){
+                    System.out.println(e.getMessage());
+                }
+
+            }
+
+
+        }
+
+
+    }
+
+
 
     private class UserActionsProcessor implements ActionListener{
+
 
 
 
@@ -383,12 +462,12 @@ public class AshBurn implements KeyListener {
             try {
                 requestProcessor = new RequestProcessor(serviceAccountPTC.LOGIN, serviceAccountPTC.PASSWORD);
             } catch (Exception e) {
-                textArea1.setText("Failed to login to server\nRetrying in 10 seconds");
+                detectorMessages.setText("Failed to login. Retry in " + REFRESH_TIME_SECONDS+ " seconds");
                 requestProcessor = null;
                 isRefreshEnabled=true;
             }
         }else {
-            textArea1.setText("Please check PTC login");
+            detectorMessages.setText("Please check PTC login");
             isRefreshEnabled=false;
             locatorSwitchButton.setText("Start");
         }
@@ -431,7 +510,7 @@ private void refreshPokemons(){
 
             ArrayList<PokemonData> catchablePokemons;
 
-            Coordinates target=new Coordinates();
+
             int direction=0;
 
             String compassDirection=null;
@@ -441,86 +520,114 @@ private void refreshPokemons(){
 
 
                 if(isRefreshEnabled) {
+/*
+
+                    tableModel.addRow(new Object[] { "pokemon.name" , "compassDirection", "GO!" });
+                    tableModel.addRow(new Object[] { "pokemon.name" , "compassDirection", "GO!" });
+                    tableModel.addRow(new Object[] { "pokemon.name" , "compassDirection", "GO!" });
+*/
 
                     if(requestProcessor==null){
+                        detectorMessages.setText("Reconnecting");
                         connectToPTC();
-                    }
+                    }else {
 
-                    try {
-                        requestProcessor.setLocation(position.latitude, position.longitude);
-                        catchablePokemons = requestProcessor.findCatchablePokemons();
-                        textArea1.setText("");
-
-                        for (PokemonData pokemon : catchablePokemons) {
-
-
-                            target.latitude=pokemon.latitude;
-                            target.longitude=pokemon.longitude;
-
-                            direction=getDirection(target);
-
-                            switch (direction) {
-                                case 1:
-                                    compassDirection = "SW";
-                                    break;
-                                case 2:
-                                    compassDirection = "S";
-                                    break;
-                                case 3:
-                                    compassDirection = "SE";
-                                    break;
-                                case 4:
-                                    compassDirection = "W";
-                                    break;
-                                case 0:
-                                    compassDirection = "Here";
-                                    break;
-
-                                case 6:
-                                    compassDirection = "E";
-                                    break;
-                                case 7:
-                                    compassDirection = "NW";
-                                    break;
-                                case 8:
-                                    compassDirection = "N";
-                                    break;
-                                case 9:
-                                    compassDirection = "NE";
-                                    break;
-
-                            }
-
-
-                            //textArea1.append(pokemon.name + "\n" + pokemon.longitude.toString() + "\n" + pokemon.latitude.toString() + "\n\n");
-                            textArea1.append(pokemon.name + "\t Direction: " + compassDirection + "\n");
-                            textArea1.append(pokemon.longitude.toString() + "\n" + pokemon.latitude.toString() + "\n\n");
-
-
-                        }
-
-                    }catch (Exception e){
-                        textArea1.setText("Connection failed, retrying");
                         try {
-                            sleep(2000);
+                            requestProcessor.setLocation(position.latitude, position.longitude);
+                            catchablePokemons = requestProcessor.findCatchablePokemons();
+                            detectorMessages.setText("");
 
-                            if(serviceAccountPTC.LOGIN!=null && serviceAccountPTC.PASSWORD!=null){
-                                requestProcessor.reconnect();
-                            }else {
-                                connectToPTC();
+                            int tableSize = tableModel.getRowCount();
+
+                            for (int i = 0; i < tableSize; i++) {
+                                tableModel.removeRow(0);
+                            }
+
+                            detectedPokemons.clear();
+
+                            for (PokemonData pokemon : catchablePokemons) {
+
+                                Coordinates pokemonLocation = new Coordinates();
+
+                                pokemonLocation.latitude = pokemon.latitude;
+                                pokemonLocation.longitude = pokemon.longitude;
+                                pokemonLocation.name = pokemon.name;
+
+                                direction = getDirection(pokemonLocation);
+
+                                switch (direction) {
+                                    case 1:
+                                        compassDirection = "South-West";
+                                        break;
+                                    case 2:
+                                        compassDirection = "South";
+                                        break;
+                                    case 3:
+                                        compassDirection = "South-East";
+                                        break;
+                                    case 4:
+                                        compassDirection = "West";
+                                        break;
+                                    case 0:
+                                        compassDirection = "Here";
+                                        break;
+
+                                    case 6:
+                                        compassDirection = "East";
+                                        break;
+                                    case 7:
+                                        compassDirection = "North-West";
+                                        break;
+                                    case 8:
+                                        compassDirection = "North";
+                                        break;
+                                    case 9:
+                                        compassDirection = "North-East";
+                                        break;
+
+                                }
+
+
+                                //textArea1.append(pokemon.name + "\n" + pokemon.longitude.toString() + "\n" + pokemon.latitude.toString() + "\n\n");
+
+
+                                detectedPokemons.add(pokemonLocation);
+
+
+                                tableModel.addRow(new Object[]{pokemon.name, compassDirection, "GO!"});
+
+
+                            }
+
+                        } catch (Exception e) {
+                            detectorMessages.setText("Connection failed, retrying");
+                            try {
+                                sleep(2000);
+
+                                if (serviceAccountPTC.LOGIN != null && serviceAccountPTC.PASSWORD != null) {
+                                    requestProcessor.reconnect();
+                                } else {
+                                    connectToPTC();
+                                }
+
+
+                            } catch (Exception ex) {
+                                detectorMessages.setText("Login failed. Retry in " + REFRESH_TIME_SECONDS + " seconds");
                             }
 
 
-                        }catch (Exception ex){
-                            textArea1.setText("Login failed, will retry in 10 seconds");
                         }
-
-
                     }
 
                 }
 
-                sleep(REFRESH_TIME);
+                for(long i = REFRESH_TIME_SECONDS ; i>0; i--){
+                    detectorMessages.setText("Refreshing data in " + i );
+                    sleep(1000);
+
+                }
+                detectorMessages.setText("Looking for nearby pokemons");
+
 
             }
 
@@ -654,9 +761,9 @@ private void refreshPokemons(){
         isLoopEnabled=false;
         isOnAutopilot=false;
 
-        Coordinates target = dataManager.loadCheckpoint(id);
+        sleep(100);
 
-        currentLoopTarget.setText("->" + target.name);
+        Coordinates target = dataManager.loadCheckpoint(id);
 
         autopilotToLocation(target);
     }
@@ -715,7 +822,7 @@ private void refreshPokemons(){
 
                         while (loopTargetID < routePoints.size() && !isOnAutopilot) {
                             target = dataManager.loadCheckpoint(routePoints.get(loopTargetID));
-                            currentLoopTarget.setText("->" + target.name);
+
                             autopilotToLocation(target);
                             loopTargetID++;
 
@@ -752,6 +859,8 @@ private void refreshPokemons(){
         isLoopEnabled=false;
         isOnAutopilot=false;
 
+        sleep(100);
+
         Coordinates target=new Coordinates();
 
         Double lon=0.0;
@@ -786,6 +895,13 @@ private void refreshPokemons(){
     private void autopilotToLocation(Coordinates target){
 
         isOnAutopilot=true;
+
+        if(target.name.length()>0){
+            currentLoopTarget.setText("Going to " + target.name);
+        }else {
+            currentLoopTarget.setText("Going somewhere on autopilot");
+        }
+
 
         new Thread(new Runnable() {
             @Override
@@ -1098,6 +1214,22 @@ private void refreshPokemons(){
             Thread.sleep(time);
         } catch (InterruptedException e) {
         }
+    }
+
+
+    public class Semaphore {
+        private boolean signal = false;
+
+        public synchronized void take() {
+            this.signal = true;
+            this.notify();
+        }
+
+        public synchronized void release() throws InterruptedException{
+            while(!this.signal) wait();
+            this.signal = false;
+        }
+
     }
 
 }
