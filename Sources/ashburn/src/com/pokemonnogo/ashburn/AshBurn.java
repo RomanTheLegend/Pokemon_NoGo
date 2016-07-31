@@ -124,7 +124,7 @@ public class AshBurn implements KeyListener {
 
     private boolean isRefreshEnabled=true;
 
-    private final long REFRESH_TIME_SECONDS=10;
+    private final long REFRESH_TIME_SECONDS=5;
 
     private Semaphore semaphore = new Semaphore();
 
