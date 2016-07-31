@@ -72,10 +72,18 @@ and then rename it and reboot
 
 12. Install Pokemon NoGo .apk file and launch it
 13. Click "Start"
-14. Open Windows command line and paste this:
+14. Open Windows command line 
+15. Right click on NOX icon -> Properties -> Open File Location. Then locate nox_adb.exe in that folder and drag it to command line
+16. Paste this to the command line and press Enter* :
+```
+ -s 127.0.0.1:62001 forward tcp:1234 tcp:9090
+```
+
+*- after doing  steps 14-16 and before pressing Enter the command line should look similar to this:
 ```
 "C:\Program Files\NOX\Nox\bin\nox_adb.exe" -s 127.0.0.1:62001 forward tcp:1234 tcp:9090
-```
+``` 
+where path to nox_adb.exe might be different on different systems
 
 15. Launch Pokemon GO, launch AshBurn client and enjoy the game
 16. To enable Pokemon locator, please provide your secondary PTC login in AshBurn client under Settings
