@@ -1,6 +1,6 @@
 # Pokemon NoGo
 
-Desktop client for playing Pokemon GO on any pc
+Desktop client for playing Pokemon GO on any PC
 It can work both with emulators and mobile phones. Connection is done over ADB socket forwarding
 
 Features:
@@ -8,9 +8,9 @@ Features:
 * Seamless gameplay experience
 * Full control over player's movements
 * Ability to automate navigation between locations
-* Own Pokemon Detector which helps locating pokemons nearby
+* Own Pokemon Detector which helps locating Pokemon nearby
 * Checkpoints for farming the best locations
-* Patroling mode between any number of checkpoints
+* Patroll mode between any number of checkpoints
 * Pokedex style :)
 
 #[Screenshot](https://github.com/RomanTheLegend/Pokemon_NoGo/blob/master/Screenshot2.PNG)#
@@ -35,7 +35,7 @@ Please give follow up or contact me here. Any feedback is much appreciated.
 * Android terminal emulator (https://apkpure.com/terminal-emulator-for-android/jackpal.androidterm)
 
 * Dedicated PTC account for Pokemon detector. ** DO NOT USE YOUR MAIN ACCOUNT FOR THAT**
-	(also please activate it by starting a game and picking your first pokemon)
+	(also please activate it by starting a game and picking your first Pokemon)
 
 ## How to setup
 (Youtube video with installation steps and client demo will come in the next few days)
@@ -87,9 +87,9 @@ and then rename it and reboot
 ``` 
 where path to nox_adb.exe might be different on different systems
 
-20. Launch AshBurn client, make sure that Pokemon NoGo log window has "Client connection dtected"
+20. Launch AshBurn client, make sure that Pokemon NoGo log window has "Client connection detected"
 21. Launch Pokemon GO and enjoy the game :)
-22. To enable Pokemon locator, please provide your secondary PTC login in AshBurn client under Settings
+22. To enable Pokemon locater, please provide your secondary PTC login in AshBurn client under Settings
 
 
 
