@@ -111,8 +111,9 @@ public class AshBurn implements KeyListener {
 
     private boolean isOnAutopilot=false;
     private boolean isLoopEnabled=false;
-
+    private boolean isRefreshEnabled=true;
     private boolean goFast=false;
+    private boolean allwaysOnTop=false;
 
     private int loopTargetID=0;
 
@@ -122,7 +123,7 @@ public class AshBurn implements KeyListener {
 
     private RequestProcessor requestProcessor;
 
-    private boolean isRefreshEnabled=true;
+
 
     private final long REFRESH_TIME_SECONDS=5;
 
@@ -291,6 +292,7 @@ public class AshBurn implements KeyListener {
 
 
 
+
         frame.setJMenuBar(menuBar);
 
         frame.pack();
@@ -310,7 +312,12 @@ public class AshBurn implements KeyListener {
         settingsMenuItem.addActionListener(userActionsProcessor);
         settingsMenuItem.setActionCommand("Edit settings");
 
+        JCheckBoxMenuItem alwaysOnTopMenuItem = new JCheckBoxMenuItem("Always on top");
+        alwaysOnTopMenuItem.addActionListener(userActionsProcessor);
+        alwaysOnTopMenuItem.setActionCommand("Switch always on top");
+
         settingsMenu.add(settingsMenuItem);
+        settingsMenu.add(alwaysOnTopMenuItem);
         menuBar.add(settingsMenu);
         menuBar.add(aboutMenu);
 
@@ -341,11 +348,22 @@ public class AshBurn implements KeyListener {
 
 
          scrollPane.getViewport().setBackground(new Color(86,154,5));
+    }
+
+    private void switchAlwaysOnTop(){
+
+
+        JFrame frame = (JFrame)SwingUtilities.getRoot(contentPane);
+
+        allwaysOnTop=!allwaysOnTop;
+
+        frame.setAlwaysOnTop(allwaysOnTop);
+
+
 
 
 
     }
-
 
 
 
@@ -443,6 +461,9 @@ public class AshBurn implements KeyListener {
                     break;
                 case "Edit settings":
                     showSettingsDialog();
+                    break;
+                case "Switch always on top":
+                    switchAlwaysOnTop();
                     break;
 
             }

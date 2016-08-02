@@ -10,7 +10,7 @@ Features:
 * Ability to automate navigation between locations
 * Own Pokemon Detector which helps locating Pokemon nearby
 * Checkpoints for farming the best locations
-* Patroll mode between any number of checkpoints
+* Patrol mode between any number of checkpoints
 * Pokedex style :)
 
 #[Screenshot](https://github.com/RomanTheLegend/Pokemon_NoGo/blob/master/Screenshot2.PNG)#
@@ -21,7 +21,7 @@ Features:
 #[Official Twitter] (https://twitter.com/RomanTheLegend) 
 Please give follow up or contact me here. Any feedback is much appreciated.
 
-#[Official Pokemon NoGo Reddit thread] (https://www.reddit.com/r/pokemongodev/comments/4tnvz2/pokemon_nogo_project/)#
+**Official Reddit discussions is moving to another sub, new link will be provided shortly**
 
 
 ![Pokemon NoGo screenshot]( https://github.com/RomanTheLegend/Pokemon_NoGo/blob/master/Screenshot2.PNG )
@@ -29,7 +29,7 @@ Please give follow up or contact me here. Any feedback is much appreciated.
 
 
 ## Prerequisites
-* NOX App Player (http://en.bignox.com)
+* NOX App Player (http://en.bignox.com) - there are two versions available. Please use the one WITHOUT Pokemon GO preinstalled
 * Xposed framework (use this exact version: http://dl-xda.xposed.info/modules/de.robv.android.xposed.installer_v33_36570c.apk )
 * Mock Mock Locations (is installed through Xposed)
 * Android terminal emulator (https://apkpure.com/terminal-emulator-for-android/jackpal.androidterm)
@@ -89,10 +89,17 @@ where path to nox_adb.exe might be different on different systems
 
 20. Launch AshBurn client, make sure that Pokemon NoGo log window has "Client connection detected"
 21. Launch Pokemon GO and enjoy the game :)
-22. To enable Pokemon locater, please provide your secondary PTC login in AshBurn client under Settings
+22. To enable Pokemon detector, please provide your secondary PTC login in AshBurn client under Settings
 
+-------------
 
+For people who have problems running this on NOX, here's complete NOX VM image with everything preinstalled and configured:
 
+https://goo.gl/x5RiK1
+
+Instructions are inside
+
+-------------
 
 
 ## Warnings
