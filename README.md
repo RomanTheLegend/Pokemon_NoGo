@@ -13,7 +13,7 @@ Features:
 * Patrol mode between any number of checkpoints
 * Pokedex style :)
 
-## Attention: Niantics forces the update to Pokemon GO client v.0.31 which ignores old hooks for GPS spoofing with results in  "GPS not found" issue. We're working on resolving this on a top priority
+## Attention: Niantics forces the update to Pokemon GO client v.0.31 which ignores old hooks for GPS spoofing and that results in  "GPS not found" issue. We're working on resolving this on a top priority
 
 ![Pokemon NoGo screenshot]( https://github.com/RomanTheLegend/Pokemon_NoGo/blob/master/Screenshot2.PNG )
 
