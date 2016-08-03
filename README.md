@@ -13,7 +13,11 @@ Features:
 * Patrol mode between any number of checkpoints
 * Pokedex style :)
 
-#[Screenshot](https://github.com/RomanTheLegend/Pokemon_NoGo/blob/master/Screenshot2.PNG)#
+## Attention: Niantics forces the update to Pokemon GO client v.0.31 which ignores old hooks for GPS spoofing with results in  "GPS not found" issue. We're working on resolving this on a top priority
+
+![Pokemon NoGo screenshot]( https://github.com/RomanTheLegend/Pokemon_NoGo/blob/master/Screenshot2.PNG )
+
+
 
 
 ## Please support this project by following my twitter or reddit thread
@@ -24,7 +28,7 @@ Please give follow up or contact me here. Any feedback is much appreciated.
 **Official Reddit discussions is moving to another sub, new link will be provided shortly**
 
 
-![Pokemon NoGo screenshot]( https://github.com/RomanTheLegend/Pokemon_NoGo/blob/master/Screenshot2.PNG )
+
 
 
 
