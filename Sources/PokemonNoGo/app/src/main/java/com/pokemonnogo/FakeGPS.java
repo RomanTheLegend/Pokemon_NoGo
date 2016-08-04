@@ -12,7 +12,7 @@ import android.util.Log;
 public class FakeGPS {
 
     private LocationManager locationManager;
-    public static final String GPS_MOCK_PROVIDER = "Pokemon NoGo";
+    public static final String GPS_MOCK_PROVIDER = "gps";
 
     public FakeGPS(){
 
