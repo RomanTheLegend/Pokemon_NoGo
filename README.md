@@ -13,7 +13,11 @@ Features:
 * Patrol mode between any number of checkpoints
 * Pokedex style :)
 
-## Attention: Niantics forces the update to Pokemon GO client v.0.31 which ignores old hooks for GPS spoofing and that results in  "GPS not found" issue. We're working on resolving this on a top priority
+## Attention: Niantics forces the update to Pokemon GO client v.0.31 which ignores old hooks for GPS spoofing.
+## Please update Pokemon NoGo client to v2.3 and Pokemon GO to this exact version:
+http://www.apkmirror.com/apk/niantic-inc/pokemon-go/pokemon-go-0-31-0-release/pokemon-go-0-31-0-2-android-apk-download/
+## Pokemon detector currently does not work because AshBurn client needs to be updated with new API
+
 
 ![Pokemon NoGo screenshot]( https://github.com/RomanTheLegend/Pokemon_NoGo/blob/master/Screenshot2.PNG )
 
@@ -41,6 +45,10 @@ Please give follow up or contact me here. Any feedback is much appreciated.
 * Dedicated PTC account for Pokemon detector. ** DO NOT USE YOUR MAIN ACCOUNT FOR THAT**
 	(also please activate it by starting a game and picking your first Pokemon)
 
+	
+* Pokemon GO client v0.31 build 2016073000 :
+http://www.apkmirror.com/apk/niantic-inc/pokemon-go/pokemon-go-0-31-0-release/pokemon-go-0-31-0-2-android-apk-download/
+	
 ## How to setup
 (Youtube video with installation steps and client demo will come in the next few days)
 
@@ -101,7 +109,14 @@ For people who have problems running this on NOX, here's complete NOX VM image w
 
 https://goo.gl/x5RiK1
 
-Instructions are inside
+Instructions are inside. Because this image still has old Pokemon GO and Pokemon NoGo clients, please uninstall them and reinstall from these links:
+
+* Pokemon GO client v0.31 build 2016073000:
+http://www.apkmirror.com/apk/niantic-inc/pokemon-go/pokemon-go-0-31-0-release/pokemon-go-0-31-0-2-android-apk-download/
+
+
+* Pokemon NoGo v2.3:
+https://github.com/RomanTheLegend/Pokemon_NoGo/blob/master/v4.3_alpha/Pokemon_NoGo_v2.3.apk
 
 -------------
 

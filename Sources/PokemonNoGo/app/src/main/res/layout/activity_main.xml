@@ -28,7 +28,7 @@
             android:layout_marginBottom="50px"
             android:fadeScrollbars="false">
     <TextView
-            android:text="Pokemon NoGo v2.2\n--------------------\n\t\t\t\tLog:\n"
+            android:text="Pokemon NoGo v2.3\n--------------------\n\t\t\t\tLog:\n"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:id="@+id/textView"
