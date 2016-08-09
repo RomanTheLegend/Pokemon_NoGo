@@ -643,7 +643,12 @@ private void refreshPokemons(){
                 }
 
                 for(long i = REFRESH_TIME_SECONDS ; i>0; i--){
-                    detectorMessages.setText("Refreshing data in " + i );
+
+                    if(isRefreshEnabled) {
+                        detectorMessages.setText("Refreshing data in " + i);
+                    }else {
+                        detectorMessages.setText("Scan on pause");
+                    }
                     sleep(1000);
 
                 }
@@ -796,15 +801,17 @@ private void refreshPokemons(){
 
         int size = routePoints.size();
 
+        String pointName=cpNames.get(id-1).getText();
+
 
 
         if (size>0){
             if (id != routePoints.get(size-1)) {
                 routePoints.add(id);
-                textRouteSequence.setText(textRouteSequence.getText() + "->" + id);
+                textRouteSequence.setText(textRouteSequence.getText() + " -> " + pointName);
             }
         }else {
-            textRouteSequence.setText(id+"");
+            textRouteSequence.setText(pointName+"");
             routePoints.add(id);
         }
 

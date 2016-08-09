@@ -107,16 +107,9 @@ where path to nox_adb.exe might be different on different systems
 
 For people who have problems running this on NOX, here's complete NOX VM image with everything preinstalled and configured:
 
-https://goo.gl/x5RiK1
+https://goo.gl/TOCZjy
 
-Instructions are inside. Because this image still has old Pokemon GO and Pokemon NoGo clients, please uninstall them and reinstall from these links:
-
-* Pokemon GO client v0.31 build 2016073000:
-http://www.apkmirror.com/apk/niantic-inc/pokemon-go/pokemon-go-0-31-0-release/pokemon-go-0-31-0-2-android-apk-download/
-
-
-* Pokemon NoGo v2.3:
-https://github.com/RomanTheLegend/Pokemon_NoGo/blob/master/v4.3_alpha/Pokemon_NoGo_v2.3.apk
+Instructions are inside
 
 -------------
 
