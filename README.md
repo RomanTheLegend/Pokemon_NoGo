@@ -32,12 +32,44 @@ Please give follow up or contact me here. Any feedback is much appreciated.
 **Official Reddit discussions is moving to another sub, new link will be provided shortly**
 
 
+##  How to run
+1. Click "Start"
+2. Open Windows command line 
+3. Right click on NOX icon -> Properties -> Open File Location. Then locate nox_adb.exe in that folder and drag it to command line
+4. Paste this to the command line and press Enter* :
+```
+ -s 127.0.0.1:62001 forward tcp:1234 tcp:9090
+```
+
+*- after doing  steps 17-19 and before pressing Enter the command line should look similar to this:
+```
+"C:\Program Files\NOX\Nox\bin\nox_adb.exe" -s 127.0.0.1:62001 forward tcp:1234 tcp:9090
+``` 
+where path to nox_adb.exe might be different on different systems
+
+5. Launch AshBurn client, make sure that Pokemon NoGo log window has "Client connection detected"
+6. Launch Pokemon GO and enjoy the game :)
+7. To enable Pokemon detector, please provide your secondary PTC login in AshBurn client under Settings
 
 
 
+## Easy install
+Universal
+* Download and install NOX player 3.7.0.0:  https://goo.gl/WErTkg
+* Download latest NOX VM backup: https://goo.gl/V1Bse3
+* Follow this guide and restore VM: http://en.bignox.com/blog/?p=301
 
-## Prerequisites
-* NOX App Player (http://en.bignox.com) - there are two versions available. Please use the one WITHOUT Pokemon GO preinstalled
+Alternative (Possibly version-dependant)
+* Download and install NOX player 3.7.0.0:  https://goo.gl/WErTkg
+* Download latest NOX VM backup: https://goo.gl/TOCZjy
+* Follow the instructions inside the archive
+
+-------------
+
+
+
+## Manual installation - Prerequisites
+* NOX App Player (https://goo.gl/WErTkg) - there are two versions available. Please use the one WITHOUT Pokemon GO preinstalled
 * Xposed framework (use this exact version: http://dl-xda.xposed.info/modules/de.robv.android.xposed.installer_v33_36570c.apk )
 * Mock Mock Locations (is installed through Xposed)
 * Android terminal emulator (https://apkpure.com/terminal-emulator-for-android/jackpal.androidterm)
@@ -49,8 +81,11 @@ Please give follow up or contact me here. Any feedback is much appreciated.
 * Pokemon GO client v0.31 build 2016073000 :
 http://www.apkmirror.com/apk/niantic-inc/pokemon-go/pokemon-go-0-31-0-release/pokemon-go-0-31-0-2-android-apk-download/
 	
-## How to setup
-(Youtube video with installation steps and client demo will come in the next few days)
+	
+	
+	
+## Manual installation
+(Youtube video with installation still pending)
 
 1. Download latest Pokemon NoGo files (v4.3 alpha)
 2. Install NOX player, launch it and go to settings:	
@@ -103,15 +138,7 @@ where path to nox_adb.exe might be different on different systems
 21. Launch Pokemon GO and enjoy the game :)
 22. To enable Pokemon detector, please provide your secondary PTC login in AshBurn client under Settings
 
--------------
 
-For people who have problems running this on NOX, here's complete NOX VM image with everything preinstalled and configured:
-
-https://goo.gl/TOCZjy
-
-Instructions are inside
-
--------------
 
 
 ## Warnings
