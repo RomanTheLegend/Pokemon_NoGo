@@ -58,12 +58,13 @@ Universal
 * Download and install NOX player 3.7.0.0:  https://goo.gl/WErTkg
 * Download latest NOX VM backup: https://goo.gl/V1Bse3
 * Follow this guide and restore VM: http://en.bignox.com/blog/?p=301
+* Download AshBurn client from latest Pokemon NoGo files (v4.3 alpha) and enjoy the game
 
 Alternative (Possibly version-dependant)
 * Download and install NOX player 3.7.0.0:  https://goo.gl/WErTkg
 * Download latest NOX VM backup: https://goo.gl/TOCZjy
 * Follow the instructions inside the archive
-
+* Download AshBurn client from latest Pokemon NoGo files (v4.3 alpha) and enjoy the game
 -------------
 
 
