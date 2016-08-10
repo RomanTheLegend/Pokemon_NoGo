@@ -24,7 +24,9 @@ Features:
 #[Official Twitter] (https://twitter.com/RomanTheLegend) 
 Please give follow up or contact me here. Any feedback is much appreciated.
 
-**Official Reddit discussions is moving to another sub, new link will be provided shortly**
+#[Official Reddit discussions] (https://www.reddit.com/r/pokemongodev/comments/4tnvz2/pokemon_nogo_project/)
+
+#[Owned Core thread] (http://www.ownedcore.com/forums/pokemon-go/pokemon-go-hacks-cheats/562798-pokemon-nogo-play-pc-keyboard.html)
 
 
 ##  How to run
