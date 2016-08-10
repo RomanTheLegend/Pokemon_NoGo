@@ -783,14 +783,7 @@ private void refreshPokemons(){
 
 
     private void goToCheckpoint(int id) {
-
-        isLoopEnabled=false;
-        isOnAutopilot=false;
-
-        sleep(100);
-
         Coordinates target = dataManager.loadCheckpoint(id);
-
         autopilotToLocation(target);
     }
 
@@ -821,13 +814,10 @@ private void refreshPokemons(){
 
     private void loopThroughCheckpoints(){
 
+        stopAllMovements();
+
         if (routePoints.size()>0) {
 
-            isLoopEnabled = false;
-
-            sleep(300);
-
-            isLoopEnabled = true;
 
             if (loopTargetID != 0) {
                 loopTargetID--;
@@ -839,6 +829,7 @@ private void refreshPokemons(){
 
                     Coordinates target;
 
+                    isLoopEnabled=true;
 
                     while (isLoopEnabled) {
 
@@ -851,12 +842,18 @@ private void refreshPokemons(){
                         while (loopTargetID < routePoints.size() && !isOnAutopilot) {
                             target = dataManager.loadCheckpoint(routePoints.get(loopTargetID));
 
-                            autopilotToLocation(target);
+                            if(target.name!=null){
+                                currentLoopTarget.setText("Going to " + target.name);
+                            }else {
+                                currentLoopTarget.setText("Going somewhere on autopilot");
+                            }
+
+                            autopilotMainLoop(target);
+
                             loopTargetID++;
 
-                        }
 
-                        sleep(1000);
+                        }
 
 
                     }
@@ -874,8 +871,7 @@ private void refreshPokemons(){
     }
 
     private void clearRoute(){
-        isLoopEnabled=false;
-        isOnAutopilot=false;
+        stopAllMovements();
         loopTargetID=0;
         textRouteSequence.setText("");
         routePoints.clear();
@@ -884,10 +880,6 @@ private void refreshPokemons(){
 
     private void walkToLocation(){
 
-        isLoopEnabled=false;
-        isOnAutopilot=false;
-
-        sleep(100);
 
         Coordinates target=new Coordinates();
 
@@ -922,9 +914,11 @@ private void refreshPokemons(){
 
     private void autopilotToLocation(Coordinates target){
 
-        isOnAutopilot=true;
+        stopAllMovements();
 
-        if(target.name.length()>0){
+
+
+        if(target.name!=null){
             currentLoopTarget.setText("Going to " + target.name);
         }else {
             currentLoopTarget.setText("Going somewhere on autopilot");
@@ -935,21 +929,7 @@ private void refreshPokemons(){
             @Override
             public void run() {
 
-                int direction=0;
-
-                while (isOnAutopilot){
-
-                    direction=getDirection(target);
-
-                    if(direction!=0) {
-
-                        sendMovement(direction);
-                        sleep(30);
-                    }else {
-                        isOnAutopilot=false;
-                    }
-
-                }
+                autopilotMainLoop(target);
 
 
             }
@@ -959,6 +939,24 @@ private void refreshPokemons(){
 
     }
 
+
+    private void autopilotMainLoop(Coordinates target){
+        int direction=0;
+        isOnAutopilot=true;
+        while (isOnAutopilot){
+
+            direction=getDirection(target);
+
+            if(direction!=0) {
+
+                sendMovement(direction);
+                sleep(30);
+            }else {
+                isOnAutopilot=false;
+            }
+
+        }
+    }
 
     private int getDirection(Coordinates target){
         int direction=0;
@@ -1118,8 +1116,7 @@ private void refreshPokemons(){
 
     public void keyPressed(KeyEvent e) {
 
-        isLoopEnabled=false;
-        isOnAutopilot=false;
+        stopAllMovements();
 
         keyReadingArea.setText("");
 
@@ -1161,7 +1158,14 @@ private void refreshPokemons(){
     }
 
 
+private void stopAllMovements(){
 
+    while(isOnAutopilot || isLoopEnabled) {
+        isOnAutopilot = false;
+        isLoopEnabled = false;
+        sleep(300);
+    }
+}
 
     private void sendMovement(int direction) {
 

@@ -13,11 +13,6 @@ Features:
 * Patrol mode between any number of checkpoints
 * Pokedex style :)
 
-## Attention: Niantics forces the update to Pokemon GO client v.0.31 which ignores old hooks for GPS spoofing.
-## Please update Pokemon NoGo client to v2.3 and Pokemon GO to this exact version:
-http://www.apkmirror.com/apk/niantic-inc/pokemon-go/pokemon-go-0-31-0-release/pokemon-go-0-31-0-2-android-apk-download/
-## Pokemon detector currently does not work because AshBurn client needs to be updated with new API
-
 
 ![Pokemon NoGo screenshot]( https://github.com/RomanTheLegend/Pokemon_NoGo/blob/master/Screenshot2.PNG )
 
@@ -58,13 +53,14 @@ Universal
 * Download and install NOX player 3.7.0.0:  https://goo.gl/WErTkg
 * Download latest NOX VM backup: https://goo.gl/V1Bse3
 * Follow this guide and restore VM: http://en.bignox.com/blog/?p=301
-* Download AshBurn client from latest Pokemon NoGo files (v4.3 alpha) and enjoy the game
+* Download AshBurn client from latest Pokemon NoGo files (v4.4) and enjoy the game
 
 Alternative (Possibly version-dependant)
 * Download and install NOX player 3.7.0.0:  https://goo.gl/WErTkg
 * Download latest NOX VM backup: https://goo.gl/TOCZjy
 * Follow the instructions inside the archive
-* Download AshBurn client from latest Pokemon NoGo files (v4.3 alpha) and enjoy the game
+* Download AshBurn client from latest Pokemon NoGo files (v4.4) and enjoy the game
+
 -------------
 
 
@@ -88,7 +84,7 @@ http://www.apkmirror.com/apk/niantic-inc/pokemon-go/pokemon-go-0-31-0-release/po
 ## Manual installation
 (Youtube video with installation still pending)
 
-1. Download latest Pokemon NoGo files (v4.3 alpha)
+1. Download latest Pokemon NoGo files (v4.4)
 2. Install NOX player, launch it and go to settings:	
 	* Under "General" make sure that "Root" is ON
 	* Under "Advanced" set "Performance Settings" to "High".
