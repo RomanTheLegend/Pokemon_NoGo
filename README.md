@@ -51,18 +51,14 @@ where path to nox_adb.exe might be different on different systems
 
 
 ## Easy install
-Universal
-* Download and install NOX player 3.7.0.0:  https://goo.gl/WErTkg
-* Download latest NOX VM backup: https://goo.gl/V1Bse3
-* Follow this guide and restore VM: http://en.bignox.com/blog/?p=301
-* Download AshBurn client from latest Pokemon NoGo files (v4.4) and enjoy the game
-
-Alternative (Possibly version-dependant)
 * Download and install NOX player 3.7.0.0:  https://goo.gl/WErTkg
 * Download latest NOX VM backup: https://goo.gl/TOCZjy
 * Follow the instructions inside the archive
 * Download AshBurn client from latest Pokemon NoGo files (v4.4) and enjoy the game
 
+
+Latest Pokemon GO client could be downloaded here:
+http://www.apkmirror.com/apk/niantic-inc/pokemon-go/pokemon-go-0-33-0-release/
 -------------
 
 
